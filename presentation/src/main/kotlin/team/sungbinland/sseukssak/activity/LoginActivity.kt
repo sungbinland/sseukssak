@@ -7,9 +7,12 @@
 
 package team.sungbinland.sseukssak.activity
 
+import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
+import androidx.core.splashscreen.SplashScreen
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.kakao.sdk.auth.AuthApiClient
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.ClientError
@@ -27,6 +30,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
     override val vm: LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
 
         binding.lifecycleOwner = this
@@ -114,3 +118,4 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
         const val TAG = "LoginActivity"
     }
 }
+
