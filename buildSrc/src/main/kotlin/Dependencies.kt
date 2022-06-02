@@ -21,7 +21,8 @@ object Dependencies {
         "androidx.fragment:fragment-ktx:${Versions.Ktx.Fragment}",
         "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.Ktx.LifeCycle}",
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Ktx.ViewModel}",
-        "androidx.navigation:navigation-fragment-ktx:${Versions.Ktx.Navigation}"
+        "androidx.navigation:navigation-fragment-ktx:${Versions.Ktx.Navigation}",
+        "androidx.navigation:navigation-ui-ktx:${Versions.Ktx.Navigation}"
     )
 
     val Ui = listOf(
