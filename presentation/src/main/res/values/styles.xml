@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ SseukSsak © 2022 Team Sungbinland. all rights reserved.
+  ~ SseukSsak license is under the MIT.
+  ~
+  ~ Please see: https://github.com/sungbinland/sseukssak/blob/main/LICENSE.
+  -->
+
+<resources>
+    <!-- ImageView Style-->
+    <style name="Circle">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!-- EditText Style-->
+    <style name="SearchEditText">
+        <item name="colorControlNormal">@color/navy</item>
+        <item name="colorControlActivated">@color/black</item>
+        <item name="android:textColor">@color/navy</item>
+        <item name="android:textColorHint">@color/navy</item>
+        <item name="android:textCursorDrawable">@color/black</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- TextView Style-->
+    <style name="TextMedium" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+    <style name="TextMedium.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextSmall14">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+    <style name="TextSmall14.Navy">
+        <item name="android:textColor">@color/navy</item>
+    </style>
+
+    <style name="TextSmall14.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextSmall12">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+    <style name="TextSmall12.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextSmall12.Navy">
+        <item name="android:textColor">@color/navy</item>
+    </style>
+
+    <style name="TextSmall12.Pink">
+        <item name="android:textColor">@color/pink</item>
+    </style>
+
+    <style name="TextSmall10">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+</resources>

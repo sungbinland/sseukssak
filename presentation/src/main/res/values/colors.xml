@@ -7,4 +7,10 @@
 
 <resources>
     <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="grey">#343434</color>
+    <color name="navy_grey">#e2ebf3</color>
+    <color name="navy">#526a7e</color>
+    <color name="yellow">#ffd264</color>
+    <color name="pink">#ff7a9c</color>
 </resources>

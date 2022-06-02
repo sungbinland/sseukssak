@@ -7,4 +7,23 @@
 
 <resources>
     <string name="app_name">쓱싹</string>
+
+    <!-- Navigation -->
+    <string name="label_sseukssak_list">쓱싹리스트</string>
+    <string name="label_my_sseukssak_board">내 쓱싹보드</string>
+    <string name="label_profile">프로필</string>
+
+    <!-- TextView -->
+    <string name="label_total_prior">총</string>
+    <string name="label_total_rear">의 글이 쓱싹됐어요!</string>
+    <string name="label_welcome">안녕하세요,</string>
+    <string name="label_user_suffix">님!</string>
+    <string name="label_today">오늘도 </string>
+    <string name="label_try">해보세요😊</string>
+    <string name="label_service_center">고객센터</string>
+    <string name="label_question">자주 묻는 질문</string>
+    <string name="label_want_msg">쓱싹에게 전하고 싶은 메세지가 있다면</string>
+    <string name="label_order_new">최신</string>
+    <string name="label_search">무엇이든 검색해보세요!</string>
+
 </resources>
