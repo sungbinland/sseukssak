@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ SseukSsak © 2022 Team Sungbinland. all rights reserved.
+  ~ SseukSsak license is under the MIT.
+  ~
+  ~ Please see: https://github.com/sungbinland/sseukssak/blob/main/LICENSE.
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20sp">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:contentInsetStart="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:contentDescription="@null"
+            android:src="@drawable/sungbinland" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@string/new_sseukssak_text"
+            android:textColor="#343434"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center"
+            android:text="@string/new_sseukssak_store"
+            android:textColor="#343434"
+            android:textSize="12sp"
+            android:textStyle="normal" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <TextView
+            android:id="@+id/link_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:text="@string/link"
+            android:textColor="#343434"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/link_edit_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/new_sseukssak_edit_text_background"
+            android:backgroundTint="@color/new_seaukssak_gray"
+            android:hint="@string/input_link"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:paddingStart="18dp"
+            android:textColor="#343434"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="@string/title"
+            android:textColor="@color/new_seaukssak_black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/new_sseukssak_edit_text_background"
+            android:backgroundTint="@color/new_seaukssak_gray"
+            android:hint="@string/input_title"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:paddingStart="18dp"
+            android:textColor="#343434"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="@string/memo"
+            android:textColor="#343434"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/new_sseukssak_momo_background"
+            android:backgroundTint="@color/new_seaukssak_gray"
+            android:gravity="top"
+            android:hint="@string/new_sseukssak_memo_text"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:paddingStart="18dp"
+            android:paddingTop="10dp"
+            android:textColor="#343434"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="@string/hashtag"
+            android:textColor="#343434"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/new_sseukssak_edit_text_background"
+            android:backgroundTint="@color/new_seaukssak_gray"
+            android:hint="@string/enter_as"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:paddingStart="18dp"
+            android:textColor="#343434"
+            android:textSize="12sp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/new_sseukssak_upload_btn"
+            android:backgroundTint="#ffd264"
+            android:text="@string/sseukssak_upload_btn"
+            android:textColor="#ff7a9c"
+            android:textSize="14sp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
