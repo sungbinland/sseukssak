@@ -7,4 +7,15 @@
 
 <resources>
     <string name="app_name">쓱싹</string>
+    <string name="link">링크</string>
+    <string name="title">글 제목</string>
+    <string name="memo">메모</string>
+    <string name="input_title">글 제목을 입력해주세요.</string>
+    <string name="input_link">링크를 입력해주세요.</string>
+    <string name="hashtag">해쉬태그</string>
+    <string name="enter_as">,로 구분해주세요</string>
+    <string name="sseukssak_upload_btn">쓱싹 올리기</string>
+    <string name="new_sseukssak_memo_text">기억에 남을만한 메모를 작성해보세요</string>
+    <string name="new_sseukssak_text">새로 쓱싹하기</string>
+    <string name="new_sseukssak_store">쓱싹 보관해보세요</string>
 </resources>
