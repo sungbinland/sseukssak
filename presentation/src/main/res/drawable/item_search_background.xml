@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ SseukSsak © 2022 Team Sungbinland. all rights reserved.
+  ~ SseukSsak license is under the MIT.
+  ~
+  ~ Please see: https://github.com/sungbinland/sseukssak/blob/main/LICENSE.
+  -->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:bottom="1dp"
+        android:left="-2dp"
+        android:right="-2dp"
+        android:top="-2dp">
+
+        <shape android:shape="rectangle">
+            <stroke
+                android:width="1dp"
+                android:color="@color/item_search_stoke_color" />
+            <solid android:color="@color/white" />
+        </shape>
+    </item>
+</layer-list>
