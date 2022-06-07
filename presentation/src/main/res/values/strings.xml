@@ -7,4 +7,8 @@
 
 <resources>
     <string name="app_name">쓱싹</string>
+    <string name="search">검색하기</string>
+    <string name="search_for_anything">무엇이든 검색해보세요!</string>
+    <string name="delete_all">전부 삭제하기</string>
+    <string name="icon">icon</string>
 </resources>
