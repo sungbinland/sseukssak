@@ -5,103 +5,117 @@
   ~ Please see: https://github.com/sungbinland/sseukssak/blob/main/LICENSE.
   -->
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginStart="22dp"
-    android:layout_marginEnd="22dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        <variable
+            name="view"
+            type="team.sungbinland.sseukssak.fragment.search.SearchFragment" />
+
+        <variable
+            name="viewModel"
+            type="team.sungbinland.sseukssak.fragment.search.SearchViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:contentInsetStart="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="22dp">
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_100tb"
-            android:contentDescription="@string/icon" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:gravity="center_horizontal"
-            android:lineSpacingExtra="9sp"
-            android:text="@string/search"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:gravity="center_horizontal"
-            android:lineSpacingExtra="6sp"
-            android:text="@string/search_for_anything"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            android:textStyle="normal" />
-
-    </androidx.appcompat.widget.Toolbar>
-
-    <EditText
-        android:id="@+id/search_edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:background="@drawable/search_edit_text_background"
-        android:drawableEnd="@drawable/ic_baseline_search_24"
-        android:hint="@string/search_for_anything"
-        android:inputType="text"
-        android:paddingStart="18dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:layout_marginTop="12dp"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/search_edit_text">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:lineSpacingExtra="7sp"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            tools:text="선방님의 검색내역" />
-
-        <TextView
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="end"
-            android:lineSpacingExtra="6sp"
-            android:text="@string/delete_all"
-            android:textColor="#343434"
-            android:textSize="12sp"
-            android:textStyle="normal" />
-    </LinearLayout>
+            app:contentInsetStart="0dp"
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="9dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="@string/icon"
+                android:src="@drawable/ic_100tb" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:gravity="center_horizontal"
+                android:lineSpacingExtra="9sp"
+                android:text="@string/search"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:gravity="center_horizontal"
+                android:lineSpacingExtra="6sp"
+                android:text="@string/search_for_anything"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="normal" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <SearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:autofillHints=""
+            android:background="@drawable/search_edit_text_background"
+            android:inputType="text"
+            android:layoutDirection="rtl"
+            android:textSize="14sp"
+            app:iconifiedByDefault="true"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/search_view">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="7sp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:text="선방님의 검색내역" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:lineSpacingExtra="6sp"
+                android:onClick="@{()->viewModel.deleteAllSearch()}"
+                android:text="@string/delete_all"
+                android:textColor="#343434"
+                android:textSize="12sp"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/search_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="9dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
