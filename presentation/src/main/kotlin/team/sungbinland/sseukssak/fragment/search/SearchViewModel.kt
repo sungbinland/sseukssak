@@ -36,8 +36,8 @@ class SearchViewModel(
                 initialValue = UiState.Uninitialized
             )
 
-    fun deleteSearch(idx: Int): StateFlow<UiState<String>> =
-        repository.deleteSearch(idx)
+    fun deleteSearch(entity: SearchEntity): StateFlow<UiState<String>> =
+        repository.deleteSearch(entity.id)
             .stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(5000),
