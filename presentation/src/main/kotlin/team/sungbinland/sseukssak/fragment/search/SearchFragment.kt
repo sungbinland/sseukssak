@@ -9,9 +9,7 @@ package team.sungbinland.sseukssak.fragment.search
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import team.sungbinland.sseukssak.R
 import team.sungbinland.sseukssak.base.BaseFragment
 import team.sungbinland.sseukssak.databinding.FragmentSearchBinding
@@ -19,32 +17,31 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import team.sungbinland.sseukssak.BR
 import team.sungbinland.sseukssak.data.search.db.SearchEntity
 import team.sungbinland.sseukssak.util.UiState
 
+@AndroidEntryPoint
 class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_search) {
 
-    private val viewModel: SearchViewModel by viewModels()
+    private val searchViewModel: SearchViewModel by viewModels()
     private val searchAdapter: SearchAdapter by lazy {
-        SearchAdapter()
+        SearchAdapter(searchViewModel)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-
-        binding.apply {
-            view = this@SearchFragment
-            viewModel = viewModel
-        }
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // onCreateView 에 쓸 경우 binding에 초기화가 안되 오류 생김
+        binding.apply {
+            binding.view = this@SearchFragment
+            viewModel = searchViewModel
+            setVariable(BR.viewModel, viewModel)
+
+        }
         setAdapter()
         searchSetting()
         getAllSearch()
@@ -57,7 +54,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
             android.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 lifecycleScope.launch {
-                    viewModel.insertSearch(SearchEntity(searchText = query ?: ""))
+                    searchViewModel.insertSearch(SearchEntity(searchText = query ?: ""))
 
                 }
                 return false
@@ -83,20 +80,28 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
 
     private fun getAllSearch() {
 
-        when (val value = viewModel.getAllSearch.value) {
-            is UiState.Loading -> {
+        lifecycleScope.launch {
+            searchViewModel.getAllSearch().collect {
+                when (it) {
+                    is UiState.Loading -> {
 
-                Log.d("TAG", "getAllSearch: 로딩중..")
-            }
-            is UiState.Success -> {
+                        Log.d("TAG", "getAllSearch: 로딩중..")
+                    }
+                    is UiState.Success -> {
+                        Log.d("TAG", "getAllSearch: 성공 : ${it.data}")
 
-                searchAdapter.submitList(value.data)
-            }
-            is UiState.Error -> {
-                Log.d("TAG", "getAllSearch: error message : ${value.error}")
+                        searchAdapter.submitList(it.data)
 
+                    }
+                    is UiState.Error -> {
+                        Log.d("TAG", "getAllSearch: error message : ${it.error}")
+
+                    }
+                    UiState.Uninitialized -> {}
+                }
             }
-            UiState.Uninitialized -> TODO()
+
         }
+
     }
 }
