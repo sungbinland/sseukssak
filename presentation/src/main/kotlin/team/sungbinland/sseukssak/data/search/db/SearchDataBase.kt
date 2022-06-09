@@ -15,15 +15,15 @@
 package team.sungbinland.sseukssak.data.search.db
 
 import androidx.room.Database
+import androidx.room.RoomDatabase
 
 @Database(
     entities = [SearchEntity::class],
     version = 1,
     exportSchema = false
 )
-abstract class SearchDataBase {
+abstract class SearchDataBase  : RoomDatabase() {
     abstract fun searchDao(): SearchDao
-
 
     companion object{
         const val SEARCH_DATABASE = "search_database"
