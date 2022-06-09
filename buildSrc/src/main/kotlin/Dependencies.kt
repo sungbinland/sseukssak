@@ -43,11 +43,14 @@ object Dependencies {
     )
 
     val Jetpack = listOf(
-        "com.google.dagger:hilt-android:${Versions.Jetpack.Hilt}"
+        "com.google.dagger:hilt-android:${Versions.Jetpack.Hilt}",
+        "androidx.room:room-ktx:${Versions.Jetpack.Room}"
+
     )
 
     val Compiler = listOf(
-        "com.google.dagger:hilt-android-compiler:${Versions.Jetpack.Hilt}"
+        "com.google.dagger:hilt-android-compiler:${Versions.Jetpack.Hilt}",
+        "androidx.room:room-compiler:${Versions.Jetpack.Room}"
     )
 
     val Debug = listOf(
