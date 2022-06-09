@@ -7,23 +7,18 @@
 
 package team.sungbinland.sseukssak.activity
 
-import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
 import androidx.activity.viewModels
-import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import dagger.hilt.android.AndroidEntryPoint
 import team.sungbinland.sseukssak.R
 import team.sungbinland.sseukssak.base.BaseActivity
 import team.sungbinland.sseukssak.databinding.ActivityEmptyBinding
-import team.sungbinland.sseukssak.util.extensions.launchedWhenCreated
 import team.sungbinland.sseukssak.util.extensions.repeatOnStarted
 import team.sungbinland.sseukssak.util.extensions.toast
 
@@ -32,6 +27,8 @@ class EmptyActivity : BaseActivity<ActivityEmptyBinding, EmptyViewModel>(R.layou
     override val vm: EmptyViewModel by viewModels()
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var drawer: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +42,8 @@ class EmptyActivity : BaseActivity<ActivityEmptyBinding, EmptyViewModel>(R.layou
         appBarConfiguration = AppBarConfiguration(navController.graph, binding.drawerLayout)
 
         setToolbar()
-        binding.mainNavi.lifecycleOwner = this
+
+        setDrawer()
 
         repeatOnStarted {
             vm.eventFlow.collect { event -> handleEvent(event) }
@@ -56,24 +54,6 @@ class EmptyActivity : BaseActivity<ActivityEmptyBinding, EmptyViewModel>(R.layou
     private fun handleEvent(event: EmptyViewModel.Event) = when (event) {
         is EmptyViewModel.Event.OpenDrawer -> {
             binding.drawerLayout.open()
-        }
-        is EmptyViewModel.Event.OpenSearch -> {
-            toast("search").show()
-        }
-        is EmptyViewModel.Event.OpenList -> {
-            toast("list").show()
-        }
-        is EmptyViewModel.Event.OpenBoard -> {
-            toast("board").show()
-        }
-        is EmptyViewModel.Event.OpenProfile -> {
-            toast("profile").show()
-        }
-        is EmptyViewModel.Event.OpenService -> {
-            toast("service").show()
-        }
-        is EmptyViewModel.Event.OpenQuestion -> {
-            toast("question").show()
         }
     }
 
@@ -94,6 +74,28 @@ class EmptyActivity : BaseActivity<ActivityEmptyBinding, EmptyViewModel>(R.layou
         }
     }
 
+    private fun setDrawer() {
+        drawerLayout = binding.drawerLayout
 
+        binding.mainNavi.constraintSseukssakList.setOnClickListener {
+            drawerLayout.closeDrawers()
+        }
+
+        binding.mainNavi.constraintBoard.setOnClickListener {
+            drawerLayout.closeDrawers()
+        }
+
+        binding.mainNavi.constraintProfile.setOnClickListener {
+            drawerLayout.closeDrawers()
+        }
+
+        binding.mainNavi.btnService.setOnClickListener {
+            drawerLayout.closeDrawers()
+        }
+
+        binding.mainNavi.btnQuestion.setOnClickListener {
+            drawerLayout.closeDrawers()
+        }
+    }
 
 }

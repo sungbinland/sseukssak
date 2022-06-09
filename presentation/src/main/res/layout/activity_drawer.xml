@@ -11,9 +11,6 @@
 
     <data>
 
-        <variable
-            name="vm"
-            type="team.sungbinland.sseukssak.activity.EmptyViewModel" />
     </data>
 
     <com.google.android.material.navigation.NavigationView
@@ -85,9 +82,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_today"
-                    tools:text="오늘도 "
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_welcome" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_welcome"
+                    tools:text="오늘도 " />
 
                 <TextView
                     android:id="@+id/tv_sseukssak"
@@ -117,7 +114,6 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="36dp"
                 android:background="@drawable/border_top_bottom"
-                android:onClick="@{() -> vm.openSseukssakList()}"
                 android:paddingTop="18dp"
                 android:paddingBottom="18dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -151,7 +147,6 @@
                 android:layout_marginStart="36dp"
                 android:layout_marginEnd="36dp"
                 android:background="@drawable/border_bottom"
-                android:onClick="@{() -> vm.openBoard()}"
                 android:paddingTop="18dp"
                 android:paddingBottom="18dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -185,7 +180,6 @@
                 android:layout_marginStart="36dp"
                 android:layout_marginEnd="36dp"
                 android:background="@drawable/border_bottom"
-                android:onClick="@{() -> vm.openProfile()}"
                 android:paddingTop="18dp"
                 android:paddingBottom="18dp"
                 app:layout_constraintEnd_toEndOf="parent"

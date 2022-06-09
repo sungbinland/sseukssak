@@ -25,22 +25,6 @@ class EmptyViewModel @Inject constructor() : BaseViewModel() {
         event(Event.OpenDrawer)
     }
 
-    fun openSearch() {
-        event(Event.OpenSearch)
-    }
-
-    fun openSseukssakList() {
-        event(Event.OpenList)
-    }
-
-    fun openBoard() {
-        event(Event.OpenBoard)
-    }
-
-    fun openProfile() {
-        event(Event.OpenProfile)
-    }
-
     private fun event(event: Event) {
         viewModelScope.launch {
             _eventFlow.emit(event)
@@ -49,11 +33,5 @@ class EmptyViewModel @Inject constructor() : BaseViewModel() {
 
     sealed class Event {
         object OpenDrawer : Event()
-        object OpenSearch : Event()
-        object OpenList : Event()
-        object OpenBoard : Event()
-        object OpenProfile : Event()
-        object OpenService : Event()
-        object OpenQuestion : Event()
     }
 }

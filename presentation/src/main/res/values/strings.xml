@@ -12,6 +12,8 @@
     <string name="label_sseukssak_list">쓱싹리스트</string>
     <string name="label_my_sseukssak_board">내 쓱싹보드</string>
     <string name="label_profile">프로필</string>
+    <string name="drawer_open">drawer_open</string>
+    <string name="drawer_close">drawer_close</string>
 
     <!-- TextView -->
     <string name="label_total_prior">총</string>
