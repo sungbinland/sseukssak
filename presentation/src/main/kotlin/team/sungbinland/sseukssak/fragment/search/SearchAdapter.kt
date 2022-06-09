@@ -18,6 +18,7 @@ import team.sungbinland.sseukssak.data.search.db.SearchEntity
 import team.sungbinland.sseukssak.databinding.ItemSearchSseukssakBinding
 
 class SearchAdapter(
+    val viewModel: SearchViewModel
 ) : ListAdapter<SearchEntity, SearchAdapter.SearchViewHolder>(
     diffUtil
 ) {
@@ -25,9 +26,10 @@ class SearchAdapter(
     class SearchViewHolder(private val binding: ItemSearchSseukssakBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(entity: SearchEntity) {
+        fun bind(entity: SearchEntity, viewModel: SearchViewModel) {
 
             binding.entity = entity
+            binding.viewModel = viewModel
             binding.executePendingBindings()
         }
     }
@@ -45,7 +47,7 @@ class SearchAdapter(
     }
 
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), viewModel)
     }
 
     companion object {
