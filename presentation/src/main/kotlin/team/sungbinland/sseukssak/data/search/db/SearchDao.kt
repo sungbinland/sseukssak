@@ -26,15 +26,15 @@ import team.sungbinland.sseukssak.util.UiState
 interface SearchDao {
 
     @Insert
-    fun insertSearch(entity: SearchEntity): Flow<UiState<String>>
+    suspend fun insertSearch(entity: SearchEntity)
 
-    @Delete
-    fun deleteSearchAll(): Flow<UiState<String>>
+    @Query("DELETE FROM search_table")
+    suspend fun deleteSearchAll()
 
     @Query("SELECT * FROM search_table")
     fun getSearchAll(): Flow<List<SearchEntity>>
 
     @Query("DELETE FROM search_table WHERE id=:idx")
-    fun deleteSearch(idx: Int): Flow<UiState<String>>
+    suspend fun deleteSearch(idx: Int)
 
 }

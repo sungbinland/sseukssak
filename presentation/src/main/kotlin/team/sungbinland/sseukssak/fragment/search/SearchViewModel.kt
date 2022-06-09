@@ -8,19 +8,28 @@
 package team.sungbinland.sseukssak.fragment.search
 
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 import team.sungbinland.sseukssak.base.BaseViewModel
 import team.sungbinland.sseukssak.data.search.SearchRepository
 import team.sungbinland.sseukssak.data.search.db.SearchEntity
 import team.sungbinland.sseukssak.util.UiState
+import javax.inject.Inject
 
-class SearchViewModel(
+@HiltViewModel
+class SearchViewModel @Inject constructor(
     private val repository: SearchRepository
+
 ) : BaseViewModel() {
 
-    val getAllSearch: StateFlow<UiState<List<SearchEntity>>> =
+    init {
+        getAllSearch()
+    }
+
+    fun getAllSearch(): StateFlow<UiState<List<SearchEntity>>> =
         repository.getSearchAll()
             .stateIn(
                 scope = viewModelScope,
@@ -28,29 +37,17 @@ class SearchViewModel(
                 initialValue = UiState.Uninitialized
             )
 
-    fun insertSearch(entity: SearchEntity): StateFlow<UiState<String>> =
+    fun insertSearch(entity: SearchEntity) = viewModelScope.launch {
         repository.insertSearch(entity)
-            .stateIn(
-                scope = viewModelScope,
-                started = SharingStarted.WhileSubscribed(5000),
-                initialValue = UiState.Uninitialized
-            )
+    }
 
-    fun deleteSearch(entity: SearchEntity): StateFlow<UiState<String>> =
+    fun deleteSearch(entity: SearchEntity) = viewModelScope.launch {
         repository.deleteSearch(entity.id)
-            .stateIn(
-                scope = viewModelScope,
-                started = SharingStarted.WhileSubscribed(5000),
-                initialValue = UiState.Uninitialized
-            )
+    }
 
-    fun deleteAllSearch(): StateFlow<UiState<String>> =
+    fun deleteAllSearch() = viewModelScope.launch {
         repository.deleteSearchAll()
-            .stateIn(
-                scope = viewModelScope,
-                started = SharingStarted.WhileSubscribed(5000),
-                initialValue = UiState.Uninitialized
-            )
+    }
 
 
 }

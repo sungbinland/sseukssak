@@ -19,30 +19,12 @@ import kotlinx.coroutines.flow.flow
 import team.sungbinland.sseukssak.data.search.db.SearchDao
 import team.sungbinland.sseukssak.data.search.db.SearchEntity
 import team.sungbinland.sseukssak.util.UiState
+import javax.inject.Inject
 
-class SearchRepositoryImpl(
+class SearchRepositoryImpl @Inject constructor(
     private val dao: SearchDao
 ) : SearchRepository {
-    override fun insertSearch(entity: SearchEntity) = flow {
-        emit(UiState.Loading)
 
-        dao.insertSearch(entity).collect {
-            emit(UiState.Success(SUCCESS_MESSAGE))
-        }
-    }.catch { e ->
-        emit(UiState.Error(e))
-    }
-
-
-    override fun deleteSearchAll() = flow {
-        emit(UiState.Loading)
-
-        dao.deleteSearchAll().collect {
-            emit(UiState.Success(SUCCESS_MESSAGE))
-        }
-    }.catch { e ->
-        emit(UiState.Error(e))
-    }
 
     override fun getSearchAll() = flow {
         emit(UiState.Loading)
@@ -53,19 +35,11 @@ class SearchRepositoryImpl(
         emit(UiState.Error(e))
 
     }
+    override suspend fun deleteSearchAll() = dao.deleteSearchAll()
+
+    override suspend fun insertSearch(entity: SearchEntity) = dao.insertSearch(entity)
+
+    override suspend fun deleteSearch(idx: Int) = dao.deleteSearch(idx)
 
 
-    override fun deleteSearch(idx: Int) = flow {
-        emit(UiState.Loading)
-
-        dao.deleteSearch(idx).collect {
-            emit(UiState.Success(SUCCESS_MESSAGE))
-        }
-    }.catch { e ->
-        emit(UiState.Error(e))
-    }
-
-    companion object {
-        const val SUCCESS_MESSAGE = "성공했습니다."
-    }
 }

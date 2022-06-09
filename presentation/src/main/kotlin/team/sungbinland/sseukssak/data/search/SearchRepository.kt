@@ -20,13 +20,12 @@ import team.sungbinland.sseukssak.util.UiState
 
 interface SearchRepository {
 
-    fun insertSearch(entity: SearchEntity): Flow<UiState<String>>
+    suspend fun insertSearch(entity: SearchEntity)
 
-    fun deleteSearchAll(): Flow<UiState<String>>
-
+    suspend fun deleteSearchAll()
 
     fun getSearchAll(): Flow<UiState<List<SearchEntity>>>
 
-    fun deleteSearch(idx: Int): Flow<UiState<String>>
+    suspend fun deleteSearch(idx: Int)
 
 }
