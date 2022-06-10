@@ -23,9 +23,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_marginStart="20dp"
-        android:backgroundTint="@color/item_search_stoke_color"
+        android:background="@drawable/item_search_background"
         android:paddingTop="14dp"
         android:paddingBottom="14dp">
 

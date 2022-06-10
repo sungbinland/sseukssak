@@ -110,12 +110,21 @@
                 android:textStyle="normal" />
         </LinearLayout>
 
+        <View
+            android:id="@+id/line_view"
+            android:layout_width="364dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="9dp"
+            android:background="@drawable/item_search_recycler_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/search_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="9dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/line_view" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
