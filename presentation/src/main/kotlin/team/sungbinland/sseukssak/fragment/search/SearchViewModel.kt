@@ -22,7 +22,6 @@ import javax.inject.Inject
 @HiltViewModel
 class SearchViewModel @Inject constructor(
     private val repository: SearchRepository
-
 ) : BaseViewModel() {
 
     init {
@@ -37,17 +36,23 @@ class SearchViewModel @Inject constructor(
                 initialValue = UiState.Uninitialized
             )
 
-    fun insertSearch(entity: SearchEntity) = viewModelScope.launch {
-        repository.insertSearch(entity)
+    fun insertSearch(entity: SearchEntity) {
+        viewModelScope.launch {
+            repository.insertSearch(entity)
+        }
     }
 
-    fun deleteSearch(entity: SearchEntity) = viewModelScope.launch {
-        repository.deleteSearch(entity.id)
+    fun deleteSearch(entity: SearchEntity) {
+        viewModelScope.launch {
+            repository.deleteSearch(entity.id)
+        }
     }
 
-    fun deleteAllSearch() = viewModelScope.launch {
-        repository.deleteSearchAll()
+    fun deleteAllSearch() {
+        viewModelScope.launch {
+            repository.deleteSearchAll()
+        }
+
+
     }
-
-
 }
