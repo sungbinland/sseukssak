@@ -19,9 +19,7 @@ import team.sungbinland.sseukssak.databinding.ItemSearchSseukssakBinding
 
 class SearchAdapter(
     val viewModel: SearchViewModel
-) : ListAdapter<SearchEntity, SearchAdapter.SearchViewHolder>(
-    diffUtil
-) {
+) : ListAdapter<SearchEntity, SearchAdapter.SearchViewHolder>(diffUtil) {
 
     class SearchViewHolder(private val binding: ItemSearchSseukssakBinding) :
         RecyclerView.ViewHolder(binding.root) {
