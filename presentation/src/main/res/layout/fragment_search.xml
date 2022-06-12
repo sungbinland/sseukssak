@@ -16,6 +16,9 @@
             type="team.sungbinland.sseukssak.fragment.search.SearchFragment" />
 
         <variable
+            name="adapter"
+            type="team.sungbinland.sseukssak.fragment.search.SearchAdapter" />
+        <variable
             name="viewModel"
             type="team.sungbinland.sseukssak.fragment.search.SearchViewModel" />
 
@@ -124,6 +127,9 @@
             android:id="@+id/search_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:adapter="@{adapter}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/line_view" />
     </androidx.constraintlayout.widget.ConstraintLayout>
