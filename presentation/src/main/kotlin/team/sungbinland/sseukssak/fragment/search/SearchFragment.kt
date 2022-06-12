@@ -10,18 +10,16 @@ package team.sungbinland.sseukssak.fragment.search
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import team.sungbinland.sseukssak.R
-import team.sungbinland.sseukssak.base.BaseFragment
-import team.sungbinland.sseukssak.databinding.FragmentSearchBinding
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import team.sungbinland.sseukssak.BR
+import team.sungbinland.sseukssak.R
+import team.sungbinland.sseukssak.base.BaseFragment
 import team.sungbinland.sseukssak.data.search.db.SearchEntity
+import team.sungbinland.sseukssak.databinding.FragmentSearchBinding
 import team.sungbinland.sseukssak.util.UiState
+import team.sungbinland.sseukssak.util.extensions.launchedWhenCreated
 
 @AndroidEntryPoint
 class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_search) {
@@ -39,24 +37,23 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         binding.apply {
             binding.view = this@SearchFragment
             viewModel = searchViewModel
+            adapter = searchAdapter
             setVariable(BR.viewModel, viewModel)
 
         }
-        setAdapter()
         searchSetting()
         getAllSearch()
     }
 
     private fun searchSetting() {
         binding.searchView.queryHint = getString(R.string.search_for_anything)
-
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
             android.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                lifecycleScope.launch {
-                    searchViewModel.insertSearch(SearchEntity(searchText = query ?: ""))
-
+                viewLifecycleOwner.launchedWhenCreated {
+                    searchViewModel.insertSearch(SearchEntity(searchText = query.orEmpty(), 0))
                 }
+                // todo list fragment로 이동
                 return false
             }
 
@@ -70,17 +67,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
     }
 
 
-    private fun setAdapter() {
-        binding.searchRecyclerView.apply {
-            adapter = searchAdapter
-            layoutManager = LinearLayoutManager(requireContext())
-        }
-    }
-
-
     private fun getAllSearch() {
 
-        lifecycleScope.launch {
+        viewLifecycleOwner.launchedWhenCreated {
             searchViewModel.getAllSearch().collect {
                 when (it) {
                     is UiState.Loading -> {
