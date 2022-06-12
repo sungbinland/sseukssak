@@ -20,10 +20,11 @@ import team.sungbinland.sseukssak.data.search.db.SearchEntity.Companion.SEARCH_T
 
 @Entity(tableName = SEARCH_TABLE)
 data class SearchEntity(
-    val searchText: String
-) {
+    val searchText: String,
     @PrimaryKey(autoGenerate = true)
-    var id: Int = 0
+    val id: Int
+) {
+
 
     companion object {
         const val SEARCH_TABLE = "search_table"
