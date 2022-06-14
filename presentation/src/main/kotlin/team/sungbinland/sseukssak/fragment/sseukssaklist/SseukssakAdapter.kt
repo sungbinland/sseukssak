@@ -45,7 +45,7 @@ class SseukssakAdapter(private val viewModel: SseukssakViewModel) :
     }
 }
 
-class SseukssakDiffCallback : DiffUtil.ItemCallback<Sseukssak>() {
+private class SseukssakDiffCallback : DiffUtil.ItemCallback<Sseukssak>() {
     override fun areItemsTheSame(oldItem: Sseukssak, newItem: Sseukssak): Boolean {
         return oldItem.id == newItem.id
     }
