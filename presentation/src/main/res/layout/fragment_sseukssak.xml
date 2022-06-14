@@ -49,16 +49,21 @@
             app:layout_constraintTop_toBottomOf="@id/tv_order"
             tools:listitem="@layout/item_sseukssak" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_add"
-            android:layout_width="74dp"
-            android:layout_height="74dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/ic_footer"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_add"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_marginEnd="22dp"
+            android:layout_marginBottom="28dp"
+            android:backgroundTint="@color/pink"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_footer"
+            app:borderWidth="0dp"
+            app:fabSize="normal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@null" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

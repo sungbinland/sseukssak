@@ -3,9 +3,9 @@
     android:height="74dp"
     android:viewportWidth="74"
     android:viewportHeight="74">
-  <path
-      android:pathData="M37,10L37,10A27,27 0,0 1,64 37L64,37A27,27 0,0 1,37 64L37,64A27,27 0,0 1,10 37L10,37A27,27 0,0 1,37 10z"
-      android:fillColor="#FF7A9C"/>
+<!--  <path-->
+<!--      android:pathData="M37,10L37,10A27,27 0,0 1,64 37L64,37A27,27 0,0 1,37 64L37,64A27,27 0,0 1,10 37L10,37A27,27 0,0 1,37 10z"-->
+<!--      android:fillColor="#FF7A9C"/>-->
   <path
       android:pathData="M26,35L47,35A2,2 0,0 1,49 37L49,37A2,2 0,0 1,47 39L26,39A2,2 0,0 1,24 37L24,37A2,2 0,0 1,26 35z"
       android:fillColor="#FFD264"/>
