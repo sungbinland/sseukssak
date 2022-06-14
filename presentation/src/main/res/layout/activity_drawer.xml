@@ -104,6 +104,7 @@
                     android:text="@string/label_try"
                     app:layout_constraintStart_toEndOf="@id/tv_sseukssak"
                     app:layout_constraintTop_toTopOf="@id/tv_today" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -111,11 +112,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="36dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="26dp"
                 android:layout_marginEnd="36dp"
                 android:background="@drawable/border_top_bottom"
-                android:paddingTop="18dp"
-                android:paddingBottom="18dp"
+                android:paddingVertical="18dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/constraint_welcome">
@@ -138,17 +138,16 @@
                     app:layout_constraintBottom_toBottomOf="@id/iv_sseukssak_list"
                     app:layout_constraintStart_toEndOf="@id/iv_sseukssak_list"
                     app:layout_constraintTop_toTopOf="@id/iv_sseukssak_list" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraint_board"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="36dp"
-                android:layout_marginEnd="36dp"
+                android:layout_marginHorizontal="36dp"
                 android:background="@drawable/border_bottom"
-                android:paddingTop="18dp"
-                android:paddingBottom="18dp"
+                android:paddingVertical="18dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/constraint_sseukssak_list">
@@ -171,17 +170,16 @@
                     app:layout_constraintBottom_toBottomOf="@id/iv_board"
                     app:layout_constraintStart_toEndOf="@id/iv_board"
                     app:layout_constraintTop_toTopOf="@id/iv_board" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraint_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="36dp"
-                android:layout_marginEnd="36dp"
+                android:layout_marginHorizontal="36dp"
                 android:background="@drawable/border_bottom"
-                android:paddingTop="18dp"
-                android:paddingBottom="18dp"
+                android:paddingVertical="18dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/constraint_board">
@@ -204,6 +202,7 @@
                     app:layout_constraintBottom_toBottomOf="@id/iv_profile"
                     app:layout_constraintStart_toEndOf="@id/iv_profile"
                     app:layout_constraintTop_toTopOf="@id/iv_profile" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
@@ -222,8 +221,9 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_service"
                 style="@style/TextSmall12.Navy"
-                android:layout_width="168dp"
+                android:layout_width="match_parent"
                 android:layout_height="30dp"
+                android:layout_marginHorizontal="36dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/background_navy_grey_r24"
                 android:text="@string/label_service_center"
@@ -234,8 +234,9 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_question"
                 style="@style/TextSmall12.Navy"
-                android:layout_width="168dp"
+                android:layout_width="match_parent"
                 android:layout_height="30dp"
+                android:layout_marginHorizontal="36dp"
                 android:layout_marginBottom="60dp"
                 android:background="@drawable/background_navy_grey_r24"
                 android:text="@string/label_question"
@@ -246,4 +247,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.navigation.NavigationView>
+
 </layout>
