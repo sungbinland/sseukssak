@@ -18,15 +18,16 @@
         <variable
             name="sseukssak"
             type="team.sungbinland.sseukssak.dto.Sseukssak" />
+
     </data>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="175dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginHorizontal="20dp"
         android:layout_marginBottom="20dp"
         android:background="@color/white"
+        android:clipToPadding="false"
         app:cardCornerRadius="20dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,9 +39,9 @@
                 style="@style/TextSmall14.Bold"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="17dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginEnd="17dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="피어나기 거친 교향악이다"
@@ -53,8 +54,9 @@
                 style="@style/TextSmall12"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="17dp"
-                android:layout_marginEnd="17dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="20dp"
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:text="것은 주며, 용감하고 목숨이 청춘이 그들은\n곳으로 예수는 약동하다"
@@ -66,25 +68,26 @@
                 android:id="@+id/iv_sseukssak_img"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_marginEnd="17dp"
-                android:src="@drawable/sungbinland"
+                android:layout_marginEnd="16dp"
+                android:src="@color/pink"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_sseukssak_title" />
+                app:layout_constraintTop_toTopOf="@id/tv_sseukssak_title"
+                app:shapeAppearanceOverlay="@style/RoundedBox16" />
 
-            <TextView
-                android:id="@+id/tv_tag"
-                style="@style/TextSmall12.Navy"
-                android:layout_width="wrap_content"
-                android:layout_height="26dp"
-                android:layout_marginStart="17dp"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_tag_section"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/background_navy_grey_r24"
-                android:gravity="center"
-                android:paddingStart="13dp"
-                android:paddingEnd="13dp"
-                android:text="#개발"
+                android:layout_marginEnd="20dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toStartOf="@id/iv_sseukssak_img"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_sseukssak_content" />
+                app:layout_constraintTop_toBottomOf="@id/tv_sseukssak_content"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_tag" />
 
             <View
                 android:id="@+id/view_divider"
@@ -100,6 +103,7 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginStart="17dp"
+                android:contentDescription="@null"
                 android:src="@drawable/sungbinland"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -121,6 +125,7 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginStart="17dp"
+                android:contentDescription="@null"
                 android:src="@drawable/sungbinland"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/tv_comments"
@@ -142,6 +147,7 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginStart="17dp"
+                android:contentDescription="@null"
                 android:src="@drawable/sungbinland"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/tv_likes"
@@ -159,6 +165,7 @@
                 app:layout_constraintTop_toTopOf="@id/iv_comments" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.cardview.widget.CardView>
 
 </layout>
