@@ -10,6 +10,10 @@
     <style name="Circle">
         <item name="cornerSize">50%</item>
     </style>
+    
+    <style name="RoundedBox16">
+        <item name="cornerSize">16dp</item>
+    </style>
 
     <!-- EditText Style-->
     <style name="SearchEditText">
