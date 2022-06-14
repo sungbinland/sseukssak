@@ -26,7 +26,7 @@ fun LifecycleOwner.launchedWhenCreated(action: suspend CoroutineScope.() -> Unit
 
 // lifecycle의 맞게 collect/cancel 반복
 fun LifecycleOwner.repeatOnStarted(block: suspend CoroutineScope.() -> Unit) {
-    lifecycleScope.launch {
+    lifecycleScope.launchWhenCreated {
         lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED, block)
     }
 }
