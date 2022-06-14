@@ -13,7 +13,8 @@
 
         <variable
             name="vm"
-            type="team.sungbinland.sseukssak.activity.EmptyViewModel" />
+            type="team.sungbinland.sseukssak.activity.empty.EmptyViewModel" />
+
     </data>
 
     <androidx.drawerlayout.widget.DrawerLayout
@@ -43,6 +44,7 @@
                         android:layout_width="28dp"
                         android:layout_height="28dp"
                         android:layout_marginTop="20dp"
+                        android:contentDescription="@null"
                         android:scaleType="centerCrop"
                         android:src="@drawable/sungbinland"
                         app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +56,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-
                         app:layout_constraintBottom_toBottomOf="@id/toolbar_icon"
                         app:layout_constraintStart_toEndOf="@id/toolbar_icon"
                         app:layout_constraintTop_toTopOf="@id/toolbar_icon"
@@ -96,7 +97,6 @@
                         style="@style/TextSmall12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
                         android:text="@string/label_total_rear"
                         app:layout_constraintBottom_toBottomOf="@id/toolbar_title"
                         app:layout_constraintEnd_toEndOf="@id/btn_search"
@@ -104,16 +104,15 @@
 
                     <EditText
                         android:id="@+id/btn_search"
+                        style="@style/SearchEditText"
                         android:layout_width="0dp"
                         android:layout_height="37dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginEnd="20dp"
-                        android:hint="@string/label_search"
-                        style="@style/SearchEditText"
                         android:background="@drawable/background_navy_grey_r24"
                         android:ellipsize="end"
-                        android:gravity="left|center_vertical"
-                        android:onClick="@{() -> vm.openSearch()}"
+                        android:gravity="start|center_vertical"
+                        android:hint="@string/label_search"
                         android:paddingStart="20dp"
                         android:singleLine="true"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -130,6 +129,7 @@
                         app:layout_constraintEnd_toEndOf="@id/btn_search"
                         app:layout_constraintTop_toTopOf="@id/btn_search" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
             </androidx.appcompat.widget.Toolbar>
 
             <androidx.fragment.app.FragmentContainerView
