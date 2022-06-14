@@ -15,7 +15,7 @@
         android:theme="@style/Theme.SseukSsak">
 
         <activity
-            android:name=".activity.EmptyActivity"
+            android:name=".activity.empty.EmptyActivity"
             android:exported="true">
 
             <intent-filter>

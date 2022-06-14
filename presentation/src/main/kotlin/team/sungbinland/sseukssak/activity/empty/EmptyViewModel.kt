@@ -5,7 +5,7 @@
  * Please see: https://github.com/sungbinland/sseukssak/blob/main/LICENSE.
  */
 
-package team.sungbinland.sseukssak.activity
+package team.sungbinland.sseukssak.activity.empty
 
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -29,9 +29,5 @@ class EmptyViewModel @Inject constructor() : BaseViewModel() {
         viewModelScope.launch {
             _eventFlow.emit(event)
         }
-    }
-
-    sealed class Event {
-        object OpenDrawer : Event()
     }
 }

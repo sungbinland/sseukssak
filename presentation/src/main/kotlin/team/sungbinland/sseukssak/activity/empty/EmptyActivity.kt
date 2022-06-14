@@ -5,13 +5,11 @@
  * Please see: https://github.com/sungbinland/sseukssak/blob/main/LICENSE.
  */
 
-package team.sungbinland.sseukssak.activity
+package team.sungbinland.sseukssak.activity.empty
 
 import android.os.Bundle
-import android.view.Gravity
 import android.view.View
 import androidx.activity.viewModels
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -20,15 +18,12 @@ import team.sungbinland.sseukssak.R
 import team.sungbinland.sseukssak.base.BaseActivity
 import team.sungbinland.sseukssak.databinding.ActivityEmptyBinding
 import team.sungbinland.sseukssak.util.extensions.repeatOnStarted
-import team.sungbinland.sseukssak.util.extensions.toast
 
 @AndroidEntryPoint
 class EmptyActivity : BaseActivity<ActivityEmptyBinding, EmptyViewModel>(R.layout.activity_empty) {
     override val vm: EmptyViewModel by viewModels()
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var drawerLayout: DrawerLayout
-    private lateinit var drawer: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,8 +46,8 @@ class EmptyActivity : BaseActivity<ActivityEmptyBinding, EmptyViewModel>(R.layou
 
     }
 
-    private fun handleEvent(event: EmptyViewModel.Event) = when (event) {
-        is EmptyViewModel.Event.OpenDrawer -> {
+    private fun handleEvent(event: Event) = when (event) {
+        is Event.OpenDrawer -> {
             binding.drawerLayout.open()
         }
     }
@@ -75,26 +70,19 @@ class EmptyActivity : BaseActivity<ActivityEmptyBinding, EmptyViewModel>(R.layou
     }
 
     private fun setDrawer() {
-        drawerLayout = binding.drawerLayout
+        val drawerLayout = binding.drawerLayout
 
-        binding.mainNavi.constraintSseukssakList.setOnClickListener {
-            drawerLayout.closeDrawers()
-        }
+        listOf(
+            binding.mainNavi.constraintSseukssakList,
+            binding.mainNavi.constraintBoard,
+            binding.mainNavi.constraintProfile,
+            binding.mainNavi.btnService,
+            binding.mainNavi.btnQuestion
+        ).forEach { viewId ->
+            viewId.setOnClickListener {
 
-        binding.mainNavi.constraintBoard.setOnClickListener {
-            drawerLayout.closeDrawers()
-        }
-
-        binding.mainNavi.constraintProfile.setOnClickListener {
-            drawerLayout.closeDrawers()
-        }
-
-        binding.mainNavi.btnService.setOnClickListener {
-            drawerLayout.closeDrawers()
-        }
-
-        binding.mainNavi.btnQuestion.setOnClickListener {
-            drawerLayout.closeDrawers()
+                drawerLayout.closeDrawers()
+            }
         }
     }
 
