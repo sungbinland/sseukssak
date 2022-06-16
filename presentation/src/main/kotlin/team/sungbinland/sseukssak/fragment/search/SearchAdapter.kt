@@ -40,14 +40,15 @@ class SearchAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
-        val binding: ItemSearchSseukssakBinding = DataBindingUtil.inflate(
-            LayoutInflater.from(parent.context),
-            R.layout.item_search_sseukssak,
-            parent,
-            false
+        
+        return SearchViewHolder(
+            DataBindingUtil.inflate(
+                LayoutInflater.from(parent.context),
+                R.layout.item_search_sseukssak,
+                parent,
+                false
+            )
         )
-
-        return SearchViewHolder(binding)
 
     }
 
