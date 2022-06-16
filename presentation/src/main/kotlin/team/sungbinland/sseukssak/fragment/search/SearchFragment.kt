@@ -16,6 +16,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
+import io.github.jisungbin.logeukes.logeukes
 import kotlinx.coroutines.launch
 import team.sungbinland.sseukssak.BR
 import team.sungbinland.sseukssak.R
@@ -78,17 +79,16 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
                     when (it) {
                         is UiState.Loading -> {
 
-                            Log.d("TAG", "getAllSearch: 로딩중..")
+                            logeukes { "로딩중.." }
                         }
                         is UiState.Success -> {
-                            Log.d("TAG", "getAllSearch: 성공 : ${it.data}")
+                            logeukes { "성공 : ${it.data}" }
 
                             searchAdapter.submitList(it.data)
 
                         }
                         is UiState.Error -> {
-                            Log.d("TAG", "getAllSearch: error message : ${it.error}")
-
+                            logeukes { "에러 : ${it.error}" }
                         }
                         UiState.Uninitialized -> {}
                     }
