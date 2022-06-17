@@ -27,12 +27,19 @@ object DatabaseModule {
     @Singleton
     fun provideRoomDatabase(
         @ApplicationContext context: Context
-    ): SearchDataBase =
-        Room.databaseBuilder(
-            context,
-            SearchDataBase::class.java,
-            SEARCH_DATABASE
-        ).build()
+    ): SearchDataBase {
+        var INSTANCE: SearchDataBase? = null
+
+        return INSTANCE ?: synchronized(this) {
+            INSTANCE ?: Room.databaseBuilder(
+                context,
+                SearchDataBase::class.java,
+                SEARCH_DATABASE
+            ).fallbackToDestructiveMigration().build().also { INSTANCE = it }
+        }
+
+    }
+
 
     @Provides
     @Singleton
