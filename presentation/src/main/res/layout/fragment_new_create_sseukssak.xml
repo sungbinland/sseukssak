@@ -17,10 +17,6 @@
         <variable
             name="vm"
             type="team.sungbinland.sseukssak.fragment.create.NewCreateSseukssakViewModel" />
-
-        <variable
-            name="data"
-            type="team.sungbinland.sseukssak.fragment.create.NewCreateSseukssakViewModel.NewCreateSseukssak" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
