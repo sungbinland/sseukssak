@@ -7,25 +7,43 @@
 
 package team.sungbinland.sseukssak.fragment.create
 
+import androidx.lifecycle.viewModelScope
+import com.google.firebase.firestore.DocumentReference
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import team.sungbinland.sseukssak.base.BaseViewModel
+import team.sungbinland.sseukssak.data.create.model.NewCreateSseukssak
+import team.sungbinland.sseukssak.data.create.repository.NewSseukssakRepository
 import team.sungbinland.sseukssak.util.extensions.UiState
+import javax.inject.Inject
 
-class NewCreateSseukssakViewModel : BaseViewModel() {
+@HiltViewModel
+class NewCreateSseukssakViewModel @Inject constructor(
+    private val repository: NewSseukssakRepository
+) : BaseViewModel() {
 
-    private val _uiState = MutableStateFlow(UiState.Success(Unit))
-    val uiState: StateFlow<UiState> = _uiState
+    private val _uiState: MutableStateFlow<UiState<DocumentReference>> = MutableStateFlow(UiState.Loading)
+    val uiState: StateFlow<UiState<DocumentReference>> = _uiState.asStateFlow()
+
 
     fun newCreateSseukssak(data: NewCreateSseukssak) {
         //todo 파이어베이스 연결
+        repository.createSseukssak(data).addOnSuccessListener {
+            viewModelScope.launch {
+                _uiState.emit(UiState.Success(it))
+            }
+
+        }
+        repository.createSseukssak(data).addOnFailureListener {
+            viewModelScope.launch {
+                _uiState.emit(UiState.Error(it))
+            }
+
+        }
     }
 
 
-    data class NewCreateSseukssak(
-        val link: String,
-        val title: String,
-        val memo: String,
-        val hashTag: ArrayList<String>
-    )
 }
