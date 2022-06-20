@@ -19,14 +19,7 @@ import team.sungbinland.sseukssak.databinding.ItemSearchSseukssakBinding
 
 class SearchAdapter(
     val viewModel: SearchViewModel
-) : ListAdapter<SearchEntity, SearchAdapter.SearchViewHolder>(object :
-    DiffUtil.ItemCallback<SearchEntity>() {
-    override fun areContentsTheSame(oldItem: SearchEntity, newItem: SearchEntity) =
-        oldItem == newItem
-
-    override fun areItemsTheSame(oldItem: SearchEntity, newItem: SearchEntity) =
-        oldItem.id == newItem.id
-}) {
+) : ListAdapter<SearchEntity, SearchAdapter.SearchViewHolder>(SearchDiffCallback()) {
 
     class SearchViewHolder(private val binding: ItemSearchSseukssakBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -40,7 +33,7 @@ class SearchAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
-        
+
         return SearchViewHolder(
             DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
@@ -57,4 +50,14 @@ class SearchAdapter(
     }
 
 
+}
+
+private class SearchDiffCallback : DiffUtil.ItemCallback<SearchEntity>() {
+    override fun areItemsTheSame(oldItem: SearchEntity, newItem: SearchEntity): Boolean {
+        return oldItem.id == newItem.id
+    }
+
+    override fun areContentsTheSame(oldItem: SearchEntity, newItem: SearchEntity): Boolean {
+        return oldItem == newItem
+    }
 }
