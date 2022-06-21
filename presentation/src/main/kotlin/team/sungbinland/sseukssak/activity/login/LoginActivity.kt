@@ -5,13 +5,18 @@
  * Please see: https://github.com/sungbinland/sseukssak/blob/main/LICENSE.
  */
 
-package team.sungbinland.sseukssak.activity
+/*
+ * SseukSsak © 2022 Team Sungbinland. all rights reserved.
+ * SseukSsak license is under the MIT.
+ *
+ * Please see: https://github.com/sungbinland/sseukssak/blob/main/LICENSE.
+ */
 
-import android.app.Activity
+package team.sungbinland.sseukssak.activity.login
+
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
-import androidx.core.splashscreen.SplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.kakao.sdk.auth.AuthApiClient
 import com.kakao.sdk.auth.model.OAuthToken
@@ -22,7 +27,6 @@ import team.sungbinland.sseukssak.R
 import team.sungbinland.sseukssak.base.BaseActivity
 import team.sungbinland.sseukssak.databinding.ActivityLoginBinding
 import team.sungbinland.sseukssak.util.extensions.repeatOnStarted
-import team.sungbinland.sseukssak.activity.LoginViewModel.Event
 import team.sungbinland.sseukssak.util.extensions.toast
 
 class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layout.activity_login) {
