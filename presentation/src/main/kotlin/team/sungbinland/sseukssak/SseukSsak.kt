@@ -11,7 +11,6 @@ import android.app.Application
 import com.kakao.sdk.common.KakaoSdk
 import dagger.hilt.android.HiltAndroidApp
 import io.github.jisungbin.logeukes.Logeukes
-import team.sungbinland.sseukssak.BuildConfig.KAKAO_API_KEY
 
 @HiltAndroidApp
 class SseukSsak : Application() {
@@ -37,6 +36,6 @@ class SseukSsak : Application() {
             Logeukes.setup()
         }
 
-        KakaoSdk.init(this, KAKAO_API_KEY)
+        KakaoSdk.init(this, BuildConfig.KAKAO_API_KEY)
     }
 }

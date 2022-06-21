@@ -12,35 +12,46 @@
 
         <variable
             name="vm"
-            type="team.sungbinland.sseukssak.activity.LoginViewModel" />
+            type="team.sungbinland.sseukssak.activity.login.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/iv_icon"
-            android:layout_width="125dp"
-            android:layout_height="93dp"
-            android:layout_marginTop="154dp"
-            android:contentDescription="@string/activity_login_description_icon"
-            android:src="@mipmap/leak_canary_icon"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="38dp"
-            android:gravity="center"
-            android:text="@string/activity_login_description_sseukssak"
-            android:textColor="#CC343434"
-            android:textSize="12sp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@id/layout_kakao_login_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_icon" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_icon"
+                android:layout_width="125dp"
+                android:layout_height="93dp"
+                android:contentDescription="@null"
+                android:src="@mipmap/leak_canary_icon"
+                android:layout_gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="38dp"
+                android:gravity="center"
+                android:text="@string/activity_login_description_sseukssak"
+                android:textColor="@color/sseukssack_grey"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_icon" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_kakao_login_button"
@@ -62,20 +73,20 @@
                 android:layout_height="15dp"
                 android:layout_marginEnd="10dp"
                 android:layout_toStartOf="@id/tv_kakao_login_button"
+                android:contentDescription="@null"
                 android:src="@mipmap/leak_canary_icon"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_kakao_login_button"
                 app:layout_constraintEnd_toStartOf="@id/tv_kakao_login_button"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_kakao_login_button"
-                android:contentDescription="@string/activity_login_description_kakao_symbol" />
+                app:layout_constraintTop_toTopOf="@id/tv_kakao_login_button" />
 
             <TextView
                 android:id="@+id/tv_kakao_login_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/activity_login_button_kakao_login"
-                android:textColor="#191919"
+                android:textColor="@color/sseukssack_black"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
