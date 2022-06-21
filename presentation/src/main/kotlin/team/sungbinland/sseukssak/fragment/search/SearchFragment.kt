@@ -26,11 +26,12 @@ import team.sungbinland.sseukssak.databinding.FragmentSearchBinding
 import team.sungbinland.sseukssak.util.UiState
 
 @AndroidEntryPoint
-class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_search) {
+class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_search),
+    DeleteItemClickListener<SearchEntity> {
 
     private val searchViewModel: SearchViewModel by viewModels()
     private val searchAdapter: SearchAdapter by lazy {
-        SearchAdapter(searchViewModel)
+        SearchAdapter(this)
     }
 
 
@@ -42,7 +43,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
             binding.view = this@SearchFragment
             viewModel = searchViewModel
             adapter = searchAdapter
-            setVariable(BR.viewModel, viewModel)
 
         }
         searchSetting()
@@ -97,4 +97,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         }
 
     }
+
+    override fun onclick(data: SearchEntity) = searchViewModel.deleteSearch(data)
+
 }
