@@ -29,6 +29,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="56dp"
+            android:lineSpacingExtra="9sp"
             app:contentInsetStart="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +89,10 @@
                 android:importantForAutofill="no"
                 android:inputType="text"
                 android:paddingStart="18dp"
-                android:textColor="#343434"
+                android:paddingTop="10dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="10dp"
+                android:textColor="@color/new_seaukssak_black"
                 android:textSize="12sp" />
 
             <TextView
@@ -112,7 +116,10 @@
                 android:importantForAutofill="no"
                 android:inputType="text"
                 android:paddingStart="18dp"
-                android:textColor="#343434"
+                android:paddingTop="10dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="10dp"
+                android:textColor="@color/new_seaukssak_black"
                 android:textSize="12sp" />
 
             <TextView
@@ -138,7 +145,8 @@
                 android:inputType="text"
                 android:paddingStart="18dp"
                 android:paddingTop="10dp"
-                android:textColor="#343434"
+                android:paddingEnd="0dp"
+                android:textColor="@color/new_seaukssak_black"
                 android:textSize="12sp" />
 
             <TextView
@@ -162,7 +170,10 @@
                 android:importantForAutofill="no"
                 android:inputType="text"
                 android:paddingStart="18dp"
-                android:textColor="#343434"
+                android:paddingTop="10dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="10dp"
+                android:textColor="@color/new_seaukssak_black"
                 android:textSize="12sp"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -172,7 +183,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="24dp"
                 android:background="@drawable/new_sseukssak_upload_btn"
-                android:backgroundTint="#ffd264"
+                android:backgroundTint="@color/new_seaukssak_yellow"
                 android:onClick="@{()->view.newCreateSseukssak()}"
                 android:text="@string/sseukssak_upload_btn"
                 android:textColor="#ff7a9c"
