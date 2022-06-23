@@ -5,19 +5,8 @@
  * Please see: https://github.com/sungbinland/sseukssak/blob/main/LICENSE.
  */
 
-/*
- * SseukSsak © 2022 Team Sungbinland. all rights reserved.
- * SseukSsak license is under the MIT.
- *
- * Please see: https://github.com/sungbinland/sseukssak/blob/main/LICENSE.
- */
 
-/*
- * SseukSsak © 2022 Team Sungbinland. all rights reserved.
- * SseukSsak license is under the MIT.
- *
- * Please see: https://github.com/sungbinland/sseukssak/blob/main/LICENSE.
- */
+
 
 package team.sungbinland.sseukssak.fragment.create
 
@@ -29,6 +18,7 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.jisungbin.logeukes.logeukes
+import kotlinx.coroutines.launch
 import team.sungbinland.sseukssak.R
 import team.sungbinland.sseukssak.base.BaseFragment
 import team.sungbinland.sseukssak.data.create.model.NewCreateSseukssak
@@ -53,31 +43,19 @@ class NewCreateSeeukSSakFragment :
     }
 
     private fun observeUiState() {
-        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+        viewLifecycleOwner.lifecycleScope.launch {
             viewModel.uiState.flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
                 .collect { uiState ->
                     when (uiState) {
                         is UiState.Success<*> -> {
                             logeukes { "성공 : ${uiState.data}" }
-                            contentIsVisible()
                             //todo list fragment 로 이동
                         }
-                        is UiState.Error -> toast("쓱싹 생성 실패")
-                        else -> {
-                            logeukes { uiState }
+                        is UiState.Error -> toast("쓱싹 생성 실패 : ${uiState.error}")
+                        else -> logeukes { uiState }
 
-                        }
                     }
                 }
-        }
-    }
-
-    private fun contentIsVisible() {
-        binding.apply {
-            hashtagEditText.text = null
-            memoEditText.text = null
-            titleEditText.text = null
-            linkEditTxt.text = null
         }
     }
 
