@@ -18,15 +18,19 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import com.kakao.sdk.auth.AuthApiClient
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.user.UserApiClient
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import team.sungbinland.sseukssak.R
 import team.sungbinland.sseukssak.base.BaseActivity
 import team.sungbinland.sseukssak.databinding.ActivityLoginBinding
-import team.sungbinland.sseukssak.util.extensions.repeatOnStarted
 import team.sungbinland.sseukssak.util.extensions.toast
 
 class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layout.activity_login) {
@@ -42,9 +46,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
 
         checkLoginState()
 
-        repeatOnStarted {
-            vm.eventFlow.collect { event -> handleEvent(event) }
-        }
+        vm.eventFlow
+            .flowWithLifecycle(this.lifecycle, Lifecycle.State.STARTED)
+            .onEach { event -> handleEvent(event) }
+            .launchIn(lifecycleScope)
     }
 
     private fun checkLoginState() {
