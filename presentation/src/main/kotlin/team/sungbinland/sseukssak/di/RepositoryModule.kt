@@ -22,10 +22,6 @@ import team.sungbinland.sseukssak.data.create.repository.NewSseukssakRepositoryI
 @Module
 object RepositoryModule {
 
-    /**
-     * 타입 지정안해주면 오류남
-     * ex) :NewSseukssakRepository
-     */
     @Provides
     fun provideNewSseukssaRepository(fireStore: FirebaseFirestore) : NewSseukssakRepository = NewSseukssakRepositoryImpl(fireStore)
 
