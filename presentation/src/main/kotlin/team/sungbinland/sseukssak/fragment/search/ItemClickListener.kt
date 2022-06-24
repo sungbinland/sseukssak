@@ -7,6 +7,6 @@
 
 package team.sungbinland.sseukssak.fragment.search
 
-interface DeleteItemClickListener<T> {
-    fun onclick(data: T): Unit
+interface ItemClickListener<T> {
+    fun onDeleteClick(data: T)
 }
