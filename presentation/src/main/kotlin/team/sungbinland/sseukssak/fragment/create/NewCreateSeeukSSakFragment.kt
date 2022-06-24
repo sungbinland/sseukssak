@@ -49,6 +49,7 @@ class NewCreateSeeukSSakFragment :
                     when (uiState) {
                         is UiState.Success<*> -> {
                             logeukes { "성공 : ${uiState.data}" }
+                            toast("성공")
                             //todo list fragment 로 이동
                         }
                         is UiState.Error -> toast("쓱싹 생성 실패 : ${uiState.error}")
