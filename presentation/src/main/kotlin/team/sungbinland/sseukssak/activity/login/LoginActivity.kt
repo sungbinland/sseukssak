@@ -21,7 +21,6 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import com.kakao.sdk.auth.AuthApiClient
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
@@ -41,30 +40,22 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
         installSplashScreen()
         super.onCreate(savedInstanceState)
 
-        binding.lifecycleOwner = this
         binding.vm = vm
 
-        checkLoginState()
+        vm.checkLoginState { state ->
+            when (state) {
+                LoginState.LOG_OUT -> {}
+                LoginState.LOGGED_IN -> {
+                    // TODO 메인 화면으로 이동 혹은 로그아웃 처리
+                    Log.i(TAG, "이미 로그인 된 상태입니다")
+                }
+            }
+        }
 
         vm.eventFlow
             .flowWithLifecycle(this.lifecycle, Lifecycle.State.STARTED)
             .onEach { event -> handleEvent(event) }
             .launchIn(lifecycleScope)
-    }
-
-    private fun checkLoginState() {
-        if (AuthApiClient.instance.hasToken()) {
-            UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
-                if (error == null && tokenInfo != null) {
-                    Log.i(
-                        TAG, "이미 로그인 된 상태임" +
-                                "\n회원 번호: ${tokenInfo.id}" +
-                                "\n만료시간: ${tokenInfo.expiresIn} 초"
-                    )
-                    // TODO 메인 화면으로 이동 혹은 로그아웃 처리
-                }
-            }
-        }
     }
 
     private fun handleEvent(event: Event) = when (event) {
@@ -127,4 +118,3 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
         const val TAG = "LoginActivity"
     }
 }
-

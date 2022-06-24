@@ -15,6 +15,8 @@
 package team.sungbinland.sseukssak.activity.login
 
 import androidx.lifecycle.viewModelScope
+import com.kakao.sdk.auth.AuthApiClient
+import com.kakao.sdk.user.UserApiClient
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
@@ -23,6 +25,18 @@ import team.sungbinland.sseukssak.base.BaseViewModel
 class LoginViewModel : BaseViewModel() {
     private val _eventFlow = MutableSharedFlow<Event>()
     val eventFlow = _eventFlow.asSharedFlow()
+
+    fun checkLoginState(state: (LoginState) -> Unit) {
+        if (AuthApiClient.instance.hasToken()) {
+            UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
+                if (error == null && tokenInfo != null) {
+                    state(LoginState.LOGGED_IN)
+                }
+            }
+        } else {
+            state(LoginState.LOG_OUT)
+        }
+    }
 
     fun kakaoLogin() {
         event(Event.KakaoLogin)
