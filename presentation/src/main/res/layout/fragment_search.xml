@@ -10,19 +10,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
-        <variable
-            name="view"
-            type="team.sungbinland.sseukssak.fragment.search.SearchFragment" />
-
-        <variable
-            name="adapter"
-            type="team.sungbinland.sseukssak.fragment.search.SearchAdapter" />
-
         <variable
             name="viewModel"
             type="team.sungbinland.sseukssak.fragment.search.SearchViewModel" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,7 +20,6 @@
         android:layout_height="match_parent"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp">
-
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -71,7 +60,7 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-        <SearchView
+        <androidx.appcompat.widget.SearchView
             android:id="@+id/search_view"
             android:layout_width="match_parent"
             android:layout_height="37dp"
@@ -87,7 +76,6 @@
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:layout_marginTop="12dp"
             android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@+id/search_view">
@@ -106,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="end"
                 android:lineSpacingExtra="6sp"
-                android:onClick="@{()->viewModel.deleteAllSearch()}"
+                android:onClick="@{()->viewModel.deleteAll()}"
                 android:text="@string/delete_all"
                 android:textColor="#343434"
                 android:textSize="12sp"
@@ -127,7 +115,6 @@
             android:id="@+id/search_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:adapter="@{adapter}"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
