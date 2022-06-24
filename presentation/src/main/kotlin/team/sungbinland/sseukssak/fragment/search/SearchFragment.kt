@@ -8,17 +8,14 @@
 package team.sungbinland.sseukssak.fragment.search
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.jisungbin.logeukes.logeukes
 import kotlinx.coroutines.launch
-import team.sungbinland.sseukssak.BR
 import team.sungbinland.sseukssak.R
 import team.sungbinland.sseukssak.base.BaseFragment
 import team.sungbinland.sseukssak.data.search.db.SearchEntity
@@ -27,77 +24,78 @@ import team.sungbinland.sseukssak.util.UiState
 
 @AndroidEntryPoint
 class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_search),
-    DeleteItemClickListener<SearchEntity> {
+    ItemClickListener<SearchEntity> {
 
     private val searchViewModel: SearchViewModel by viewModels()
     private val searchAdapter: SearchAdapter by lazy {
         SearchAdapter(this)
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // onCreateView 에 쓸 경우 binding에 초기화가 안되 오류 생김
         binding.apply {
-            binding.view = this@SearchFragment
             viewModel = searchViewModel
-            adapter = searchAdapter
-
         }
         searchSetting()
         getAllSearch()
+        setAdapter()
+        uiStateEvent()
     }
 
     private fun searchSetting() {
         binding.searchView.queryHint = getString(R.string.search_for_anything)
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
-            android.widget.SearchView.OnQueryTextListener {
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
             override fun onQueryTextSubmit(query: String?): Boolean {
                 viewLifecycleOwner.lifecycleScope.launch {
-                    searchViewModel.insertSearch(SearchEntity(searchText = query.orEmpty(), 0))
+                    searchViewModel.insert(SearchEntity(searchText = query.orEmpty()))
                 }
                 // todo list fragment로 이동
                 return false
             }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-
-                return true
-            }
-
+            override fun onQueryTextChange(newText: String?) = true
         })
 
     }
 
+    private fun setAdapter() {
+        binding.searchRecyclerView.apply {
+            adapter = searchAdapter
+        }
+    }
 
     private fun getAllSearch() {
-
         viewLifecycleOwner.lifecycleScope.launch {
-            searchViewModel.getAllSearch().flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
-                .collect {
-                    when (it) {
-                        is UiState.Loading -> {
+            searchViewModel.getAll()
+        }
+    }
 
+    // todo 함수 이름 변경
+    private fun uiStateEvent() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            searchViewModel.uiState.flowWithLifecycle(viewLifecycleOwner.lifecycle)
+                .collect { uiState ->
+                    when (uiState) {
+                        is UiState.Loading -> {
                             logeukes { "로딩중.." }
                         }
                         is UiState.Success -> {
-                            logeukes { "성공 : ${it.data}" }
-
-                            searchAdapter.submitList(it.data)
+                            logeukes { "성공 : ${uiState.data}" }
+                            searchAdapter.submitList(uiState.data)
 
                         }
                         is UiState.Error -> {
-                            logeukes { "에러 : ${it.error}" }
+                            logeukes { "에러 : ${uiState.error}" }
                         }
-                        UiState.Uninitialized -> {}
                     }
                 }
-
         }
-
     }
 
-    override fun onclick(data: SearchEntity) = searchViewModel.deleteSearch(data)
+    override fun onDeleteClick(data: SearchEntity) = searchViewModel.delete(data)
 
 }
+
+
