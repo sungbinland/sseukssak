@@ -10,16 +10,15 @@ package team.sungbinland.sseukssak.data.search
 
 import kotlinx.coroutines.flow.Flow
 import team.sungbinland.sseukssak.data.search.db.SearchEntity
-import team.sungbinland.sseukssak.util.UiState
 
 interface SearchRepository {
 
-    suspend fun insertSearch(entity: SearchEntity)
+    suspend fun insert(entity: SearchEntity)
 
-    suspend fun deleteSearchAll()
+    suspend fun deleteAll()
 
-    fun getSearchAll(): Flow<UiState<List<SearchEntity>>>
+    suspend fun getAll(): Flow<List<SearchEntity>>
 
-    suspend fun deleteSearch(idx: Int)
+    suspend fun delete(entity: SearchEntity)
 
 }
