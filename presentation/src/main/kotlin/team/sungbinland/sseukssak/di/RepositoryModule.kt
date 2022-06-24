@@ -11,16 +11,17 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
-import dagger.hilt.android.scopes.ViewModelScoped
+import team.sungbinland.sseukssak.data.search.SearchRepository
 import team.sungbinland.sseukssak.data.search.SearchRepositoryImpl
 import team.sungbinland.sseukssak.data.search.db.SearchDao
+import javax.inject.Singleton
 
 @InstallIn(ViewModelComponent::class)
 @Module
 object RepositoryModule {
 
     @Provides
-    @ViewModelScoped
-    fun provideSearchRepository(dao: SearchDao) = SearchRepositoryImpl(dao)
+    @Singleton
+    fun provideSearchRepository(dao: SearchDao): SearchRepository = SearchRepositoryImpl(dao)
 
 }
