@@ -18,11 +18,13 @@ import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
 /**
- * insert  : 쓱싹 아이템 추가,
+ * 함수설명
+ * insert : 쓱싹 아이템 추가
  * deleteAll : 모든 쓱싹 아이템 제거
  * delete : 특정 쓱싹 아이템 제거
  * getAll : 모든 쓱싹아이템 가져오기
  */
+
 @Dao
 interface SearchDao {
 
