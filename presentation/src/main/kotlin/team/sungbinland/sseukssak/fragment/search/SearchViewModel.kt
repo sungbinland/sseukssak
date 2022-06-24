@@ -9,9 +9,7 @@ package team.sungbinland.sseukssak.fragment.search
 
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import team.sungbinland.sseukssak.base.BaseViewModel
 import team.sungbinland.sseukssak.data.search.SearchRepository
@@ -24,35 +22,37 @@ class SearchViewModel @Inject constructor(
     private val repository: SearchRepository
 ) : BaseViewModel() {
 
-    init {
-        getAllSearch()
-    }
+    private val _uiState: MutableStateFlow<UiState<List<SearchEntity>>> =
+        MutableStateFlow(UiState.Loading)
+    val uiState = _uiState.asStateFlow()
 
-    fun getAllSearch(): StateFlow<UiState<List<SearchEntity>>> =
-        repository.getSearchAll()
-            .stateIn(
-                scope = viewModelScope,
-                started = SharingStarted.WhileSubscribed(5000),
-                initialValue = UiState.Uninitialized
-            )
-
-    fun insertSearch(entity: SearchEntity) {
+    fun getAll() {
         viewModelScope.launch {
-            repository.insertSearch(entity)
+            repository.getAll()
+                .catch { e ->
+                    _uiState.emit(UiState.Error(e))
+                }
+                .collect {
+                    _uiState.emit(UiState.Success(it))
+                }
         }
     }
 
-    fun deleteSearch(entity: SearchEntity) {
+    fun insert(entity: SearchEntity) {
         viewModelScope.launch {
-            repository.deleteSearch(entity.id)
+            repository.insert(entity)
         }
     }
 
-    fun deleteAllSearch() {
+    fun delete(entity: SearchEntity) {
         viewModelScope.launch {
-            repository.deleteSearchAll()
+            repository.delete(entity)
         }
+    }
 
-
+    fun deleteAll() {
+        viewModelScope.launch {
+            repository.deleteAll()
+        }
     }
 }
