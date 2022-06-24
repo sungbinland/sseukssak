@@ -25,12 +25,13 @@ class NewCreateSseukssakViewModel @Inject constructor(
     private val repository: NewSseukssakRepository
 ) : BaseViewModel() {
 
-    private val _uiState: MutableStateFlow<UiState<DocumentReference>> = MutableStateFlow(UiState.Loading)
+    private val _uiState: MutableStateFlow<UiState<DocumentReference>> =
+        MutableStateFlow(UiState.Loading)
     val uiState: StateFlow<UiState<DocumentReference>> = _uiState.asStateFlow()
 
 
     fun newCreateSseukssak(data: NewCreateSseukssak) {
-        //todo 파이어베이스 연결
+
         repository.createSseukssak(data).addOnSuccessListener {
             viewModelScope.launch {
                 _uiState.emit(UiState.Success(it))
