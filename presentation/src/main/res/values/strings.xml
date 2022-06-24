@@ -7,4 +7,9 @@
 
 <resources>
     <string name="app_name">쓱싹</string>
+
+    <string name="skip_login"><u>로그인 건너뛰기</u></string>
+
+    <string name="activity_login_button_kakao_login">카카오톡으로 로그인하기</string>
+    <string name="activity_login_description_sseukssak">인터넷에서 마주친 소중한 정보를\n쉽게 쓱-싹해서 보관해보세요</string>
 </resources>
