@@ -9,23 +9,20 @@ package team.sungbinland.sseukssak.fragment.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import team.sungbinland.sseukssak.R
 import team.sungbinland.sseukssak.data.search.db.SearchEntity
 import team.sungbinland.sseukssak.databinding.ItemSearchSseukssakBinding
 
 class SearchAdapter(
-    private val deleteItem: DeleteItemClickListener<SearchEntity>
+    private val deleteItem: ItemClickListener<SearchEntity>
 ) : ListAdapter<SearchEntity, SearchAdapter.SearchViewHolder>(SearchDiffCallback()) {
 
     class SearchViewHolder(val binding: ItemSearchSseukssakBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(entity: SearchEntity) {
-
             binding.entity = entity
             binding.executePendingBindings()
         }
@@ -41,7 +38,9 @@ class SearchAdapter(
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
         val getItem = getItem(position)
         holder.bind(getItem)
-        holder.binding.deleteSearchImg.setOnClickListener { deleteItem.onclick(getItem) }
+        holder.binding.deleteSearchImg.setOnClickListener {
+            deleteItem.onDeleteClick(getItem)
+        }
     }
 
 
