@@ -14,27 +14,28 @@
 
 package team.sungbinland.sseukssak.data.search.db
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import kotlinx.coroutines.flow.Flow
-import team.sungbinland.sseukssak.util.UiState
 
-
+/**
+ * insert  : 쓱싹 아이템 추가,
+ * deleteAll : 모든 쓱싹 아이템 제거
+ * delete : 특정 쓱싹 아이템 제거
+ * getAll : 모든 쓱싹아이템 가져오기
+ */
 @Dao
 interface SearchDao {
 
-    @Insert
-    suspend fun insertSearch(entity: SearchEntity)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(entity: SearchEntity)
 
     @Query("DELETE FROM search_table")
-    suspend fun deleteSearchAll()
+    suspend fun deleteAll()
 
     @Query("SELECT * FROM search_table")
-    fun getSearchAll(): Flow<List<SearchEntity>>
+    suspend fun getAll(): Flow<List<SearchEntity>>
 
-    @Query("DELETE FROM search_table WHERE id=:idx")
-    suspend fun deleteSearch(idx: Int)
+    @Delete
+    suspend fun delete(entity: SearchEntity)
 
 }
