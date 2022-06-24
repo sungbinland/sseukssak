@@ -29,17 +29,14 @@ object DatabaseModule {
         @ApplicationContext context: Context
     ): SearchDataBase {
         var INSTANCE: SearchDataBase? = null
-
         return INSTANCE ?: synchronized(this) {
             INSTANCE ?: Room.databaseBuilder(
                 context,
                 SearchDataBase::class.java,
                 SEARCH_DATABASE
-            ).fallbackToDestructiveMigration().build().also { INSTANCE = it }
-        }
-
+            ).fallbackToDestructiveMigration().build()
+        }.also { INSTANCE = it }
     }
-
 
     @Provides
     @Singleton
