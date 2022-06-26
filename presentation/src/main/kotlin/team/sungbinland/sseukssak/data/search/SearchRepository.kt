@@ -5,7 +5,6 @@
  * Please see: https://github.com/sungbinland/sseukssak/blob/main/LICENSE.
  */
 
-
 package team.sungbinland.sseukssak.data.search
 
 import kotlinx.coroutines.flow.Flow
@@ -20,5 +19,4 @@ interface SearchRepository {
     suspend fun getAll(): Flow<List<SearchEntity>>
 
     suspend fun delete(entity: SearchEntity)
-
 }

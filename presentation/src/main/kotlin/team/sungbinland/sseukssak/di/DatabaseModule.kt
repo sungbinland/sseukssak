@@ -41,5 +41,4 @@ object DatabaseModule {
     @Provides
     @Singleton
     fun provideDao(dataBase: SearchDataBase): SearchDao = dataBase.searchDao()
-
 }

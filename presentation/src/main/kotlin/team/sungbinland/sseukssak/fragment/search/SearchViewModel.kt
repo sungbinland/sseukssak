@@ -9,7 +9,9 @@ package team.sungbinland.sseukssak.fragment.search
 
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import team.sungbinland.sseukssak.base.BaseViewModel
 import team.sungbinland.sseukssak.data.search.SearchRepository

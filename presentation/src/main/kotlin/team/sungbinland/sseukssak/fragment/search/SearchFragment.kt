@@ -23,7 +23,8 @@ import team.sungbinland.sseukssak.databinding.FragmentSearchBinding
 import team.sungbinland.sseukssak.util.UiState
 
 @AndroidEntryPoint
-class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_search),
+class SearchFragment :
+    BaseFragment<FragmentSearchBinding>(R.layout.fragment_search),
     ItemClickListener<SearchEntity> {
 
     private val searchViewModel: SearchViewModel by viewModels()
@@ -57,7 +58,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
 
             override fun onQueryTextChange(newText: String?) = true
         })
-
     }
 
     private fun setAdapter() {
@@ -74,7 +74,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
 
     // todo 함수 이름 변경
     private fun uiStateEvent() {
-        viewLifecycleOwner.lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             searchViewModel.uiState.flowWithLifecycle(viewLifecycleOwner.lifecycle)
                 .collect { uiState ->
                     when (uiState) {
@@ -84,7 +84,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
                         is UiState.Success -> {
                             logeukes { "성공 : ${uiState.data}" }
                             searchAdapter.submitList(uiState.data)
-
                         }
                         is UiState.Error -> {
                             logeukes { "에러 : ${uiState.error}" }
@@ -95,7 +94,4 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
     }
 
     override fun onDeleteClick(data: SearchEntity) = searchViewModel.delete(data)
-
 }
-
-

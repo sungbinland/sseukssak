@@ -32,7 +32,6 @@ class SearchAdapter(
         val binding =
             ItemSearchSseukssakBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return SearchViewHolder(binding)
-
     }
 
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
@@ -42,8 +41,6 @@ class SearchAdapter(
             deleteItem.onDeleteClick(getItem)
         }
     }
-
-
 }
 
 private class SearchDiffCallback : DiffUtil.ItemCallback<SearchEntity>() {
