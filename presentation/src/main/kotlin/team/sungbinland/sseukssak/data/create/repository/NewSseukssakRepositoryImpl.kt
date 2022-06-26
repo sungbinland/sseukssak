@@ -16,5 +16,4 @@ class NewSseukssakRepositoryImpl @Inject constructor(
 ) : NewSseukssakRepository {
     override fun createSseukssak(newCreateSseukssak: NewCreateSseukssak) =
         fireStore.collection("newCreateSseukssak").add(newCreateSseukssak)
-
 }

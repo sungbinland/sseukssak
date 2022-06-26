@@ -5,9 +5,6 @@
  * Please see: https://github.com/sungbinland/sseukssak/blob/main/LICENSE.
  */
 
-
-
-
 package team.sungbinland.sseukssak.fragment.create
 
 import android.os.Bundle
@@ -32,7 +29,6 @@ class NewCreateSeeukSSakFragment :
 
     private val viewModel: NewCreateSseukssakViewModel by viewModels()
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
@@ -50,16 +46,14 @@ class NewCreateSeeukSSakFragment :
                         is UiState.Success<*> -> {
                             logeukes { "성공 : ${uiState.data}" }
                             toast("성공")
-                            //todo list fragment 로 이동
+                            // todo list fragment 로 이동
                         }
                         is UiState.Error -> toast("쓱싹 생성 실패 : ${uiState.error}")
-                        else -> logeukes { uiState }
-
+                        is UiState.Loading -> toast("쓱싹 생성하는중..")
                     }
                 }
         }
     }
-
 
     fun newCreateSseukssak() {
         val memo = binding.memoEditText.text.toString()
@@ -83,7 +77,5 @@ class NewCreateSeeukSSakFragment :
     private fun hashTag(hashTag: String): List<String> {
 
         return hashTag.split(",")
-
     }
-
 }

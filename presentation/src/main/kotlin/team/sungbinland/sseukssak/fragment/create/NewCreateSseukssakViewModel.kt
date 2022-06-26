@@ -29,22 +29,17 @@ class NewCreateSseukssakViewModel @Inject constructor(
         MutableStateFlow(UiState.Loading)
     val uiState: StateFlow<UiState<DocumentReference>> = _uiState.asStateFlow()
 
-
     fun newCreateSseukssak(data: NewCreateSseukssak) {
 
         repository.createSseukssak(data).addOnSuccessListener {
             viewModelScope.launch {
                 _uiState.emit(UiState.Success(it))
             }
-
         }
         repository.createSseukssak(data).addOnFailureListener {
             viewModelScope.launch {
                 _uiState.emit(UiState.Error(it))
             }
-
         }
     }
-
-
 }

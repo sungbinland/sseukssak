@@ -14,5 +14,4 @@ import team.sungbinland.sseukssak.data.create.model.NewCreateSseukssak
 interface NewSseukssakRepository {
 
     fun createSseukssak(newCreateSseukssak: NewCreateSseukssak): Task<DocumentReference>
-
 }

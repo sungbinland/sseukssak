@@ -7,13 +7,10 @@
 
 package team.sungbinland.sseukssak.di
 
-
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
-import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
 import team.sungbinland.sseukssak.data.create.repository.NewSseukssakRepository
 import team.sungbinland.sseukssak.data.create.repository.NewSseukssakRepositoryImpl
@@ -23,6 +20,5 @@ import team.sungbinland.sseukssak.data.create.repository.NewSseukssakRepositoryI
 object RepositoryModule {
 
     @Provides
-    fun provideNewSseukssaRepository(fireStore: FirebaseFirestore) : NewSseukssakRepository = NewSseukssakRepositoryImpl(fireStore)
-
+    fun provideNewSseukssaRepository(fireStore: FirebaseFirestore): NewSseukssakRepository = NewSseukssakRepositoryImpl(fireStore)
 }
