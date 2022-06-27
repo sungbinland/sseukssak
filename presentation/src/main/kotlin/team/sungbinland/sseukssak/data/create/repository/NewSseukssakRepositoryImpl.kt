@@ -7,13 +7,32 @@
 
 package team.sungbinland.sseukssak.data.create.repository
 
+import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.suspendCancellableCoroutine
 import team.sungbinland.sseukssak.data.create.model.NewCreateSseukssak
+import team.sungbinland.sseukssak.util.extensions.Result
 import javax.inject.Inject
 
 class NewSseukssakRepositoryImpl @Inject constructor(
     private val fireStore: FirebaseFirestore
 ) : NewSseukssakRepository {
-    override fun createSseukssak(newCreateSseukssak: NewCreateSseukssak) =
-        fireStore.collection("newCreateSseukssak").add(newCreateSseukssak)
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    override suspend fun createSseukssak(newCreateSseukssak: NewCreateSseukssak) = flow {
+
+        runCatching {
+            suspendCancellableCoroutine<Unit> { continuation ->
+                fireStore.collection("newCreateSseukssak").add(newCreateSseukssak)
+                continuation.resume(Unit, null)
+            }
+        }.onSuccess {
+            Log.d("repository", "createSseukssak: 성공")
+            emit(Result.Success("성공"))
+        }.onFailure {
+            emit(Result.Error(it))
+        }
+    }
 }
