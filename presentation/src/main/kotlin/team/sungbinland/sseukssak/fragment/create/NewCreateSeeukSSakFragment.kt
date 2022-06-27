@@ -32,7 +32,7 @@ class NewCreateSeeukSSakFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            binding.view = this@NewCreateSeeukSSakFragment
+            this.view = this@NewCreateSeeukSSakFragment
             vm = viewModel
         }
         observeUiState()
@@ -40,16 +40,19 @@ class NewCreateSeeukSSakFragment :
 
     private fun observeUiState() {
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.uiState.flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+            viewModel.uiState.flowWithLifecycle(
+                viewLifecycleOwner.lifecycle,
+                Lifecycle.State.CREATED
+            )
                 .collect { uiState ->
                     when (uiState) {
-                        is UiState.Success<*> -> {
-                            logeukes { "성공 : ${uiState.data}" }
+                        is UiState.Success<String> -> {
+                            logeukes("fragment") { "성공 : ${uiState.data}" }
                             toast("성공")
                             // todo list fragment 로 이동
                         }
                         is UiState.Error -> toast("쓱싹 생성 실패 : ${uiState.error}")
-                        is UiState.Loading -> toast("쓱싹 생성하는중..")
+                        is UiState.Loading -> logeukes { "쓱싹 생성하는중.." }
                     }
                 }
         }
@@ -74,8 +77,5 @@ class NewCreateSeeukSSakFragment :
         }
     }
 
-    private fun hashTag(hashTag: String): List<String> {
-
-        return hashTag.split(",")
-    }
+    private fun hashTag(hashTag: String): List<String> = hashTag.split(",")
 }
