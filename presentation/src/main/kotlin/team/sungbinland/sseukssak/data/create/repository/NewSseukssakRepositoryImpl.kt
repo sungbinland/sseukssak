@@ -7,8 +7,8 @@
 
 package team.sungbinland.sseukssak.data.create.repository
 
-import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
+import io.github.jisungbin.logeukes.logeukes
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -22,17 +22,17 @@ class NewSseukssakRepositoryImpl @Inject constructor(
 
     @OptIn(ExperimentalCoroutinesApi::class)
     override suspend fun createSseukssak(newCreateSseukssak: NewCreateSseukssak) = flow {
-
         runCatching {
             suspendCancellableCoroutine<Unit> { continuation ->
                 fireStore.collection("newCreateSseukssak").add(newCreateSseukssak)
                 continuation.resume(Unit, null)
             }
-        }.onSuccess {
-            Log.d("repository", "createSseukssak: 성공")
-            emit(Result.Success("성공"))
         }.onFailure {
+            io.github.jisungbin.logeukes.logeukes { it }
             emit(Result.Error(it))
+        }.onSuccess {
+            emit(Result.Success("성공"))
+            io.github.jisungbin.logeukes.logeukes { "성공" }
         }
     }
 }
