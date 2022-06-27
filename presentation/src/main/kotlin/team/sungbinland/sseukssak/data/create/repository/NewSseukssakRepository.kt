@@ -7,11 +7,11 @@
 
 package team.sungbinland.sseukssak.data.create.repository
 
-import com.google.android.gms.tasks.Task
-import com.google.firebase.firestore.DocumentReference
+import kotlinx.coroutines.flow.Flow
 import team.sungbinland.sseukssak.data.create.model.NewCreateSseukssak
+import team.sungbinland.sseukssak.util.extensions.Result
 
 interface NewSseukssakRepository {
 
-    fun createSseukssak(newCreateSseukssak: NewCreateSseukssak): Task<DocumentReference>
+    suspend fun createSseukssak(newCreateSseukssak: NewCreateSseukssak): Flow<Result>
 }
