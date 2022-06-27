@@ -8,5 +8,5 @@
 package team.sungbinland.sseukssak.activity.login
 
 enum class LoginState {
-    LOGGED_IN, LOG_OUT
+    LoggedIn, LogOut
 }

@@ -5,13 +5,6 @@
  * Please see: https://github.com/sungbinland/sseukssak/blob/main/LICENSE.
  */
 
-/*
- * SseukSsak © 2022 Team Sungbinland. all rights reserved.
- * SseukSsak license is under the MIT.
- *
- * Please see: https://github.com/sungbinland/sseukssak/blob/main/LICENSE.
- */
-
 package team.sungbinland.sseukssak.activity.login
 
 import androidx.lifecycle.viewModelScope
@@ -30,11 +23,11 @@ class LoginViewModel : BaseViewModel() {
         if (AuthApiClient.instance.hasToken()) {
             UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
                 if (error == null && tokenInfo != null) {
-                    state(LoginState.LOGGED_IN)
+                    state(LoginState.LoggedIn)
                 }
             }
         } else {
-            state(LoginState.LOG_OUT)
+            state(LoginState.LogOut)
         }
     }
 
