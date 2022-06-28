@@ -14,7 +14,7 @@
 
 package team.sungbinland.sseukssak.data.search.db
 
-import androidx.room.*
+import androidx.room.* // ktlint-disable no-wildcard-imports
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -35,9 +35,8 @@ interface SearchDao {
     suspend fun deleteAll()
 
     @Query("SELECT * FROM search_table")
-    suspend fun getAll(): Flow<List<SearchEntity>>
+    fun getAll(): Flow<List<SearchEntity>>
 
     @Delete
     suspend fun delete(entity: SearchEntity)
-
 }
