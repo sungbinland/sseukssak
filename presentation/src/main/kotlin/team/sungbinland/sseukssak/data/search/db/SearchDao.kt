@@ -5,16 +5,13 @@
  * Please see: https://github.com/sungbinland/sseukssak/blob/main/LICENSE.
  */
 
-/*
- * SseukSsak © 2022 Team Sungbinland. all rights reserved.
- * SseukSsak license is under the MIT.
- *
- * Please see: https://github.com/sungbinland/sseukssak/blob/main/LICENSE.
- */
-
 package team.sungbinland.sseukssak.data.search.db
 
-import androidx.room.* // ktlint-disable no-wildcard-imports
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 
 /**
