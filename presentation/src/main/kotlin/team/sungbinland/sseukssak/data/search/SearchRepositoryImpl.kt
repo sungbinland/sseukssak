@@ -15,7 +15,7 @@ class SearchRepositoryImpl @Inject constructor(
     private val dao: SearchDao
 ) : SearchRepository {
 
-    override suspend fun getAll() = dao.getAll()
+    override fun getAll() = dao.getAll()
 
     override suspend fun deleteAll() = dao.deleteAll()
 

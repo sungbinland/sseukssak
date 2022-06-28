@@ -16,7 +16,7 @@ interface SearchRepository {
 
     suspend fun deleteAll()
 
-    suspend fun getAll(): Flow<List<SearchEntity>>
+    fun getAll(): Flow<List<SearchEntity>>
 
     suspend fun delete(entity: SearchEntity)
 }
