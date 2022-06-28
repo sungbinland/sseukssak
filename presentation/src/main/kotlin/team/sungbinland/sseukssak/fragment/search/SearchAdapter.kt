@@ -37,7 +37,7 @@ class SearchAdapter(
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
         val getItem = getItem(position)
         holder.bind(getItem)
-        holder.binding.deleteSearchImg.setOnClickListener {
+        holder.binding.ivDelete.setOnClickListener {
             deleteItem.onDeleteClick(getItem)
         }
     }

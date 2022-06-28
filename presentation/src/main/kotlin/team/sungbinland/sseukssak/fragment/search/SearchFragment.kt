@@ -45,8 +45,8 @@ class SearchFragment :
     }
 
     private fun searchSetting() {
-        binding.searchView.queryHint = getString(R.string.search_for_anything)
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        binding.svEdit.queryHint = getString(R.string.search_for_anything)
+        binding.svEdit.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
             override fun onQueryTextSubmit(query: String?): Boolean {
                 viewLifecycleOwner.lifecycleScope.launch {
@@ -61,7 +61,7 @@ class SearchFragment :
     }
 
     private fun setAdapter() {
-        binding.searchRecyclerView.apply {
+        binding.rvSearch.apply {
             adapter = searchAdapter
         }
     }

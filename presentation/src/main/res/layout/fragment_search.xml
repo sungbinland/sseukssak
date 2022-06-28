@@ -10,6 +10,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="team.sungbinland.sseukssak.fragment.search.SearchViewModel" />
@@ -21,22 +22,29 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toolbar_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="17dp"
             app:contentInsetStart="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
+                android:id="@+id/iv_title"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:contentDescription="@string/icon"
-                android:src="@drawable/ic_100tb" />
+                android:src="@drawable/ic_100tb"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -45,9 +53,13 @@
                 android:text="@string/search"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_title"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/tv_detail_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -56,21 +68,25 @@
                 android:text="@string/search_for_anything"
                 android:textColor="@color/black"
                 android:textSize="12sp"
-                android:textStyle="normal" />
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.appcompat.widget.Toolbar>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.SearchView
-            android:id="@+id/search_view"
+            android:id="@+id/sv_edit"
             android:layout_width="match_parent"
             android:layout_height="37dp"
+            android:layout_marginTop="17dp"
             android:autofillHints=""
-            android:background="@drawable/search_edit_text_background"
+            android:background="@drawable/bg_navy_gray_radius_28dp"
             android:inputType="text"
             android:layoutDirection="rtl"
             android:textSize="14sp"
             app:iconifiedByDefault="true"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_title" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -78,9 +94,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/search_view">
+            app:layout_constraintTop_toBottomOf="@+id/sv_edit">
 
             <TextView
+                android:id="@+id/tv_user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:lineSpacingExtra="7sp"
@@ -90,13 +107,14 @@
                 tools:text="선방님의 검색내역" />
 
             <TextView
+                android:id="@+id/tv_user_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
                 android:lineSpacingExtra="6sp"
                 android:onClick="@{()->viewModel.deleteAll()}"
                 android:text="@string/delete_all"
-                android:textColor="#343434"
+                android:textColor="@color/search_gray"
                 android:textSize="12sp"
                 android:textStyle="normal" />
         </LinearLayout>
@@ -106,13 +124,13 @@
             android:layout_width="364dp"
             android:layout_height="1dp"
             android:layout_marginTop="9dp"
-            android:background="@drawable/item_search_recycler_background"
+            android:background="@drawable/bg_white_stoke_1dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/linearLayout"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/search_recycler_view"
+            android:id="@+id/rv_search"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"

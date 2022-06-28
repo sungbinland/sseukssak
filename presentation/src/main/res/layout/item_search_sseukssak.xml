@@ -14,19 +14,17 @@
         <variable
             name="entity"
             type="team.sungbinland.sseukssak.data.search.db.SearchEntity" />
-
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/item_search_background"
+        android:background="@drawable/bg_white_stoke_bottom_1dp"
         android:paddingTop="14dp"
         android:paddingBottom="14dp">
 
         <TextView
-            android:id="@+id/search_item_text"
+            android:id="@+id/tv_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{entity.searchText}"
@@ -36,7 +34,7 @@
             tools:text="주싯수" />
 
         <ImageView
-            android:id="@+id/delete_search_img"
+            android:id="@+id/iv_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_baseline_search_24"

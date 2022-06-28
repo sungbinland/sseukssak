@@ -10,5 +10,6 @@
     <color name="item_search_stoke_color">#526a7e</color>
     <color name="black">#000000</color>
     <color name="navy_grey">#e2ebf3</color>
+    <color name="search_gray">#343434</color>
 
 </resources>
