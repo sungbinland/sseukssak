@@ -30,6 +30,7 @@ class SearchViewModel @Inject constructor(
 
     fun getAll() {
         viewModelScope.launch {
+            _uiState.emit(UiState.Loading)
             repository.getAll()
                 .catch { e ->
                     _uiState.emit(UiState.Error(e))
