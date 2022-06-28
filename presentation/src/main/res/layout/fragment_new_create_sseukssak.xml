@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="44dp"
                 android:gravity="end"
-                android:text="@string/link"
+                android:text="@string/new_sseukssak_link"
                 android:textColor="@color/new_seaukssak_black"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -85,7 +85,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/new_sseukssak_edit_text_background"
                 android:backgroundTint="@color/new_seaukssak_gray"
-                android:hint="@string/input_link"
+                android:hint="@string/new_sseukssak_input_link"
                 android:importantForAutofill="no"
                 android:inputType="text"
                 android:paddingStart="18dp"
@@ -100,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 android:gravity="end"
-                android:text="@string/title"
+                android:text="@string/new_sseukssak_title"
                 android:textColor="@color/new_seaukssak_black"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -112,7 +112,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/new_sseukssak_edit_text_background"
                 android:backgroundTint="@color/new_seaukssak_gray"
-                android:hint="@string/input_title"
+                android:hint="@string/new_sseukssak_input_title"
                 android:importantForAutofill="no"
                 android:inputType="text"
                 android:paddingStart="18dp"
@@ -127,7 +127,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 android:gravity="end"
-                android:text="@string/memo"
+                android:text="@string/new_sseukssak_memo"
                 android:textColor="#343434"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -154,7 +154,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 android:gravity="end"
-                android:text="@string/hashtag"
+                android:text="@string/new_sseukssak_hashtag"
                 android:textColor="#343434"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -166,7 +166,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/new_sseukssak_edit_text_background"
                 android:backgroundTint="@color/new_seaukssak_gray"
-                android:hint="@string/enter_as"
+                android:hint="@string/new_sseukssak_enter_as"
                 android:importantForAutofill="no"
                 android:inputType="text"
                 android:paddingStart="18dp"
@@ -185,7 +185,7 @@
                 android:background="@drawable/new_sseukssak_upload_btn"
                 android:backgroundTint="@color/new_seaukssak_yellow"
                 android:onClick="@{()->view.newCreateSseukssak()}"
-                android:text="@string/sseukssak_upload_btn"
+                android:text="@string/new_sseukssak_upload_btn"
                 android:textColor="#ff7a9c"
                 android:textSize="14sp" />
         </LinearLayout>
