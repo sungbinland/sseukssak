@@ -11,7 +11,7 @@
     <data>
 
         <variable
-            name="view"
+            name="fragment"
             type="team.sungbinland.sseukssak.fragment.create.NewCreateSeeukSSakFragment" />
 
         <variable
@@ -25,7 +25,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20sp">
 
-        <androidx.appcompat.widget.Toolbar
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="56dp"
@@ -36,30 +36,41 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
+                android:id="@+id/iv_icon"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:contentDescription="@null"
-                android:src="@drawable/sungbinland" />
+                android:src="@drawable/sungbinland"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/tv_icon_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
                 android:text="@string/new_sseukssak_text"
-                android:textColor="#343434"
+                android:textColor="@color/new_seaukssak_black"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_icon"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/tv_icon_detail_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|center"
                 android:text="@string/new_sseukssak_store"
                 android:textColor="#343434"
                 android:textSize="12sp"
-                android:textStyle="normal" />
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.appcompat.widget.Toolbar>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -68,7 +79,7 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
             <TextView
-                android:id="@+id/link_txt"
+                android:id="@+id/tv_link"
                 android:layout_width="42dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="44dp"
@@ -79,7 +90,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/link_edit_txt"
+                android:id="@+id/et_link"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -96,6 +107,7 @@
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/tv_title"
                 android:layout_width="58dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
@@ -106,7 +118,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/title_edit_text"
+                android:id="@+id/et_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -123,6 +135,7 @@
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/tv_memo"
                 android:layout_width="43dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
@@ -133,7 +146,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/memo_edit_text"
+                android:id="@+id/et_memo"
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
                 android:layout_marginTop="10dp"
@@ -150,6 +163,7 @@
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/tv_hashtag"
                 android:layout_width="67dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
@@ -160,7 +174,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/hashtag_edit_text"
+                android:id="@+id/et_hashtag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -178,13 +192,14 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_create_sseukssak"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="24dp"
                 android:background="@drawable/new_sseukssak_upload_btn"
                 android:backgroundTint="@color/new_seaukssak_yellow"
-                android:onClick="@{()->view.newCreateSseukssak()}"
+                android:onClick="@{()->fragment.newCreateSseukssak()}"
                 android:text="@string/new_sseukssak_upload_btn"
                 android:textColor="#ff7a9c"
                 android:textSize="14sp" />

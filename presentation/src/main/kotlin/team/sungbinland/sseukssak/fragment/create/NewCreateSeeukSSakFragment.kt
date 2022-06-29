@@ -32,7 +32,7 @@ class NewCreateSeeukSSakFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            this.view = this@NewCreateSeeukSSakFragment
+            fragment = this@NewCreateSeeukSSakFragment
             vm = viewModel
         }
         observeUiState()
@@ -59,10 +59,10 @@ class NewCreateSeeukSSakFragment :
     }
 
     fun newCreateSseukssak() {
-        val memo = binding.memoEditText.text.toString()
-        val title = binding.titleEditText.text.toString()
-        val link = binding.linkEditTxt.text.toString()
-        val hashTag = hashTag(binding.hashtagEditText.text.toString())
+        val memo = binding.etMemo.text.toString()
+        val title = binding.tvTitle.text.toString()
+        val link = binding.etLink.text.toString()
+        val hashTag = hashTag(binding.etHashtag.text.toString())
 
         logeukes { hashTag }
         when {

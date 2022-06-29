@@ -28,11 +28,11 @@ class NewSseukssakRepositoryImpl @Inject constructor(
                 continuation.resume(Unit, null)
             }
         }.onFailure {
-            io.github.jisungbin.logeukes.logeukes { it }
+            logeukes { it }
             emit(Result.Error(it))
         }.onSuccess {
             emit(Result.Success("성공"))
-            io.github.jisungbin.logeukes.logeukes { "성공" }
+            logeukes { "성공" }
         }
     }
 }
