@@ -11,6 +11,12 @@ import kotlinx.coroutines.flow.Flow
 import team.sungbinland.sseukssak.data.create.model.NewCreateSseukssak
 import team.sungbinland.sseukssak.util.extensions.Result
 
+/**
+ * 함수 설명
+ * @param newCreateSseukssak : 쓱싹  dto
+ * createSseukssak : 쓱싹 생성하는 함수
+ */
+
 interface NewSseukssakRepository {
 
     suspend fun createSseukssak(newCreateSseukssak: NewCreateSseukssak): Flow<Result>
