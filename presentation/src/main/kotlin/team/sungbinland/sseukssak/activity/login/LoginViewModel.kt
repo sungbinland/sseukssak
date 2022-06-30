@@ -8,27 +8,27 @@
 package team.sungbinland.sseukssak.activity.login
 
 import androidx.lifecycle.viewModelScope
-import com.kakao.sdk.auth.AuthApiClient
-import com.kakao.sdk.user.UserApiClient
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import team.sungbinland.sseukssak.base.BaseViewModel
+import javax.inject.Inject
 
-class LoginViewModel : BaseViewModel() {
+@HiltViewModel
+class LoginViewModel @Inject constructor(private val repository: LoginRepository) : BaseViewModel() {
     private val _eventFlow = MutableSharedFlow<Event>()
     val eventFlow = _eventFlow.asSharedFlow()
 
-    fun checkLoginState(state: (LoginState) -> Unit) {
-        if (AuthApiClient.instance.hasToken()) {
-            UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
-                if (error == null && tokenInfo != null) {
-                    state(LoginState.LoggedIn)
-                }
-            }
+    fun checkLoginState() =
+        if (repository.checkLoggedIn()) {
+            LoginState.LoggedIn
         } else {
-            state(LoginState.LogOut)
+            LoginState.LogOut
         }
+
+    fun saveLoginState(userId: Long) {
+        repository.saveUserId(userId)
     }
 
     fun kakaoLogin() {

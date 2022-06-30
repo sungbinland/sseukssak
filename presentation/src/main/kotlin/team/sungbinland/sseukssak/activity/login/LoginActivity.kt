@@ -16,6 +16,7 @@ import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.user.UserApiClient
+import dagger.hilt.android.AndroidEntryPoint
 import io.github.jisungbin.logeukes.LoggerType
 import io.github.jisungbin.logeukes.logeukes
 import kotlinx.coroutines.flow.launchIn
@@ -25,6 +26,7 @@ import team.sungbinland.sseukssak.base.BaseActivity
 import team.sungbinland.sseukssak.databinding.ActivityLoginBinding
 import team.sungbinland.sseukssak.util.extensions.toast
 
+@AndroidEntryPoint
 class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layout.activity_login) {
 
     override val vm: LoginViewModel by viewModels()
@@ -35,14 +37,11 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
 
         binding.vm = vm
 
-        vm.checkLoginState { state ->
-            when (state) {
-                LoginState.LogOut -> {}
-                LoginState.LoggedIn -> {
-                    // TODO 메인 화면으로 이동 혹은 로그아웃 처리
-                    logeukes(type = LoggerType.I) { "이미 로그인 된 상태입니다" }
-                }
-            }
+        if (vm.checkLoginState() == LoginState.LoggedIn) {
+            logeukes { "로그인 됨" }
+            finishLogin()
+        } else {
+            logeukes { "로그아웃 상태" }
         }
 
         vm.eventFlow
@@ -63,7 +62,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
             } else if (token != null) {
                 logeukes(type = LoggerType.I) { "카카오계정으로 로그인 성공 ${token.accessToken}" }
                 loginSuccess()
-                // TODO 메인 화면으로 이동
             }
         }
         if (UserApiClient.instance.isKakaoTalkLoginAvailable(this)) {
@@ -75,6 +73,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
 
     private fun skipLogin() {
         logeukes { "로그인 건너 뛰기" }
+        toast("로그인 건너 뛰기")
     }
 
     private fun loginWithKakaoTalkApp(callback: (OAuthToken?, Throwable?) -> Unit) {
@@ -86,9 +85,8 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
                 logeukes(type = LoggerType.E) { "loginWithKakaoTalkApp: error: $error" }
                 loginWithKakaoAccount(callback)
             } else if (token != null) {
-                // TODO 메인 화면으로 이동
-                loginSuccess()
                 logeukes(type = LoggerType.I) { "로그인 성공 ${token.accessToken}" }
+                loginSuccess()
             }
         }
     }
@@ -100,10 +98,19 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
     private fun loginSuccess() {
         UserApiClient.instance.me { user, error ->
             if (error != null) {
+                vm.saveLoginState(0L)
                 toast("로그인 실패: $error")
             } else if (user != null) {
+                user.id?.let { id -> vm.saveLoginState(id) }
                 toast("${user.kakaoAccount?.profile?.nickname}님 환영합니다!")
             }
         }
+        finishLogin()
+    }
+
+    private fun finishLogin() {
+        // TODO 메인 화면으로 이동
+        logeukes(type = LoggerType.I) { "로그인 화면 종료" }
+//        finish()
     }
 }
