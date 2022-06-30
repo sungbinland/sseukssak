@@ -5,7 +5,7 @@
  * Please see: https://github.com/sungbinland/sseukssak/blob/main/LICENSE.
  */
 
-package team.sungbinland.sseukssak.activity.empty
+package team.sungbinland.sseukssak.activity.main
 
 sealed class Event {
     object OpenDrawer : Event()

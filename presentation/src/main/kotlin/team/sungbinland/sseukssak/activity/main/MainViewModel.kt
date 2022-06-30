@@ -5,7 +5,7 @@
  * Please see: https://github.com/sungbinland/sseukssak/blob/main/LICENSE.
  */
 
-package team.sungbinland.sseukssak.activity.empty
+package team.sungbinland.sseukssak.activity.main
 
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,7 +16,7 @@ import team.sungbinland.sseukssak.base.BaseViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class EmptyViewModel @Inject constructor() : BaseViewModel() {
+class MainViewModel @Inject constructor() : BaseViewModel() {
 
     private val _eventFlow = MutableSharedFlow<Event>()
     val eventFlow = _eventFlow.asSharedFlow()
