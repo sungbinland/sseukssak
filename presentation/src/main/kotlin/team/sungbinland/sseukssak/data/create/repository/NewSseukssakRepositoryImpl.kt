@@ -27,9 +27,9 @@ class NewSseukssakRepositoryImpl @Inject constructor(
                 fireStore.collection("newCreateSseukssak").add(newCreateSseukssak)
                 continuation.resume(Unit, null)
             }
-        }.onFailure {
-            logeukes { it }
-            emit(Result.Error(it))
+        }.onFailure {throwable->
+            logeukes { throwable }
+            emit(Result.Error(throwable))
         }.onSuccess {
             emit(Result.Success("성공"))
             logeukes { "성공" }

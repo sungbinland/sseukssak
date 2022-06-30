@@ -12,9 +12,11 @@ import team.sungbinland.sseukssak.data.create.model.NewCreateSseukssak
 import team.sungbinland.sseukssak.util.extensions.Result
 
 /**
- * 함수 설명
- * @param newCreateSseukssak : 쓱싹  dto
- * createSseukssak : 쓱싹 생성하는 함수
+ * 쓱싹 생성하기
+ *
+ * @param newCreateSseukssak 쓱싹 생성하기 모델
+ *
+ * @return 쓱싹 생성하기가 성공되면 "성공" 메세지가 반환되고, 실패하면 throwable 반환됨
  */
 
 interface NewSseukssakRepository {
