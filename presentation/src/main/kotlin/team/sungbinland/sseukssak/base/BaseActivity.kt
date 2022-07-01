@@ -15,7 +15,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import io.github.jisungbin.logeukes.LoggerType
 import io.github.jisungbin.logeukes.logeukes
-import land.sungbin.systemuicontroller.setStatusBarColor
 import land.sungbin.systemuicontroller.setSystemBarsColor
 import team.sungbinland.sseukssak.util.extensions.collectWithLifecycle
 import team.sungbinland.sseukssak.util.extensions.toMessage

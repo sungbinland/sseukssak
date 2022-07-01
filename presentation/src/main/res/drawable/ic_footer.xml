@@ -1,0 +1,21 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="74dp"
+    android:height="74dp"
+    android:viewportWidth="74"
+    android:viewportHeight="74">
+
+  <!-- 배경 분홍색 삭제 -->
+<!--  <path-->
+<!--      android:pathData="M37,10L37,10A27,27 0,0 1,64 37L64,37A27,27 0,0 1,37 64L37,64A27,27 0,0 1,10 37L10,37A27,27 0,0 1,37 10z"-->
+<!--      android:fillColor="#FF7A9C"/>-->
+  <path
+      android:pathData="M26,35L47,35A2,2 0,0 1,49 37L49,37A2,2 0,0 1,47 39L26,39A2,2 0,0 1,24 37L24,37A2,2 0,0 1,26 35z"
+      android:fillColor="#FFD264"/>
+  <path
+      android:pathData="M39,26L39,47A2,2 0,0 1,37 49L37,49A2,2 0,0 1,35 47L35,26A2,2 0,0 1,37 24L37,24A2,2 0,0 1,39 26z"
+      android:fillColor="#FFD264"/>
+  <path
+      android:pathData="M35,39v-4h4v4h-4z"
+      android:fillColor="#fff"
+      android:fillType="evenOdd"/>
+</vector>

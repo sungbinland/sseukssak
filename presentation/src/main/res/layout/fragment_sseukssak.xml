@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ SseukSsak © 2022 Team Sungbinland. all rights reserved.
+  ~ SseukSsak license is under the MIT.
+  ~
+  ~ Please see: https://github.com/sungbinland/sseukssak/blob/main/LICENSE.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_order"
+            style="@style/TextSmall12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/label_order_new"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/ic_baseline_keyboard_arrow_down_24"
+            app:layout_constraintBottom_toBottomOf="@id/tv_order"
+            app:layout_constraintStart_toEndOf="@id/tv_order"
+            app:layout_constraintTop_toTopOf="@id/tv_order" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_sseukssak_list"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_order"
+            tools:listitem="@layout/item_sseukssak" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_add"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_marginEnd="22dp"
+            android:layout_marginBottom="28dp"
+            android:backgroundTint="@color/pink"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_footer"
+            app:borderWidth="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@null" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

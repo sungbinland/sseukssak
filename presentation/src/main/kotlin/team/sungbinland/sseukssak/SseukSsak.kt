@@ -8,6 +8,7 @@
 package team.sungbinland.sseukssak
 
 import android.app.Application
+import com.kakao.sdk.common.KakaoSdk
 import dagger.hilt.android.HiltAndroidApp
 import io.github.jisungbin.logeukes.Logeukes
 
@@ -34,5 +35,7 @@ class SseukSsak : Application() {
         if (BuildConfig.DEBUG) {
             Logeukes.setup()
         }
+
+        KakaoSdk.init(this, BuildConfig.KAKAO_API_KEY)
     }
 }

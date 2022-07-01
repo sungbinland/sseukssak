@@ -5,8 +5,8 @@
  * Please see: https://github.com/sungbinland/sseukssak/blob/main/LICENSE.
  */
 
-package team.sungbinland.sseukssak.activity
+package team.sungbinland.sseukssak.fragment.search
 
-import team.sungbinland.sseukssak.base.BaseViewModel
-
-class EmptyViewModel : BaseViewModel()
+interface ItemClickListener<T> {
+    fun onDeleteClick(data: T)
+}

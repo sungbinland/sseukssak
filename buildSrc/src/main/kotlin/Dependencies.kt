@@ -19,9 +19,10 @@ object Dependencies {
     val Ktx = listOf(
         "androidx.core:core-ktx:${Versions.Ktx.Core}",
         "androidx.fragment:fragment-ktx:${Versions.Ktx.Fragment}",
+        "androidx.navigation:navigation-ui-ktx:${Versions.Ktx.Navigation}",
         "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.Ktx.LifeCycle}",
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Ktx.ViewModel}",
-        "androidx.navigation:navigation-fragment-ktx:${Versions.Ktx.Navigation}"
+        "androidx.navigation:navigation-fragment-ktx:${Versions.Ktx.Navigation}",
     )
 
     val Ui = listOf(
@@ -43,11 +44,14 @@ object Dependencies {
     )
 
     val Jetpack = listOf(
-        "com.google.dagger:hilt-android:${Versions.Jetpack.Hilt}"
+        "com.google.dagger:hilt-android:${Versions.Jetpack.Hilt}",
+        "androidx.room:room-ktx:${Versions.Jetpack.Room}"
+
     )
 
     val Compiler = listOf(
-        "com.google.dagger:hilt-android-compiler:${Versions.Jetpack.Hilt}"
+        "com.google.dagger:hilt-android-compiler:${Versions.Jetpack.Hilt}",
+        "androidx.room:room-compiler:${Versions.Jetpack.Room}"
     )
 
     val Debug = listOf(
