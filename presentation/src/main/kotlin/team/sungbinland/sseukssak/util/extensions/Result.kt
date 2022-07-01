@@ -7,7 +7,6 @@
 
 package team.sungbinland.sseukssak.util.extensions
 
-
 sealed class Result {
     data class Error(val throwable: Throwable) : Result()
     data class Success(val data: String) : Result()
