@@ -8,4 +8,14 @@
 <resources>
 
     <style name="Theme.SseukSsak" parent="Theme.MaterialComponents.Light.NoActionBar" />
+
+    <style name="Theme.SseukSsak.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/sungbinland</item>
+        <item name="postSplashScreenTheme">@style/Theme.SseukSsak</item>
+
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
 </resources>

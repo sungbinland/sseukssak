@@ -13,4 +13,7 @@
     <color name="navy">#526a7e</color>
     <color name="yellow">#ffd264</color>
     <color name="pink">#ff7a9c</color>
+    
+    <color name="sseukssack_black">#191919</color>
+    <color name="sseukssack_grey">#CC343434</color>
 </resources>
