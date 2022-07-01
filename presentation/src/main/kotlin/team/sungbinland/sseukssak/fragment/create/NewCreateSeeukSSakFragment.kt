@@ -43,18 +43,22 @@ class NewCreateSeeukSSakFragment :
             viewModel.uiState.flowWithLifecycle(
                 viewLifecycleOwner.lifecycle,
                 Lifecycle.State.CREATED
-            )
-                .collect { uiState ->
-                    when (uiState) {
-                        is UiState.Success<String> -> {
-                            logeukes("fragment") { "성공 : ${uiState.data}" }
-                            toast("성공")
-                            // todo list fragment 로 이동
-                        }
-                        is UiState.Error -> toast("쓱싹 생성 실패 : ${uiState.error}")
-                        is UiState.Loading -> logeukes { "쓱싹 생성하는중.." }
+            ).collect { uiState ->
+                when (uiState) {
+                    is UiState.Loading -> {
+                        logeukes("new") { "Loading" }
+                    }
+                    is UiState.Success -> {
+                        logeukes("new") { "Success" }
+                        toast("Success")
+                        // todo list fragment로 이동하기
+                    }
+                    is UiState.Error -> {
+                        logeukes("new") { "Error" }
+                        toast("Error")
                     }
                 }
+            }
         }
     }
 
@@ -64,7 +68,6 @@ class NewCreateSeeukSSakFragment :
         val link = binding.etLink.text.toString()
         val hashTag = hashTag(binding.etHashtag.text.toString())
 
-        logeukes { hashTag }
         when {
             memo.isEmpty() -> toast("메모를 입력해 주세요.")
             title.isEmpty() -> toast("제목를 입력해 주세요.")
