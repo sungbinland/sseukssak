@@ -14,26 +14,30 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 
-/**
- * 함수설명
- * insert : 쓱싹 아이템 추가
- * deleteAll : 모든 쓱싹 아이템 제거
- * delete : 특정 쓱싹 아이템 제거
- * getAll : 모든 쓱싹아이템 가져오기
- */
-
 @Dao
 interface SearchDao {
-
+    /**
+     * Search 데이터 추가
+     */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(entity: SearchEntity)
 
+    /**
+     * Search 데이터 모두 삭제
+     */
     @Query("DELETE FROM search_table")
     suspend fun deleteAll()
 
+    /**
+     * Search 데이터 갱신
+     * @return Search 데이터 갱신 후 반환된 데이터
+     */
     @Query("SELECT * FROM search_table")
     fun getAll(): Flow<List<SearchEntity>>
 
+    /**
+     * 특정 Search 데이터 삭제
+     */
     @Delete
     suspend fun delete(entity: SearchEntity)
 }

@@ -28,6 +28,12 @@ class SearchViewModel @Inject constructor(
         MutableStateFlow(UiState.Loading)
     val uiState = _uiState.asStateFlow()
 
+    /**
+     * Search 데이터 갱신
+     * @return 실패시 uiState에 throwable 전달 한다.
+     * @return 성공했을 시 uiState에 entity를 전달한다.
+     *
+     */
     fun getAll() {
         viewModelScope.launch {
             _uiState.emit(UiState.Loading)
@@ -35,24 +41,33 @@ class SearchViewModel @Inject constructor(
                 .catch { e ->
                     _uiState.emit(UiState.Error(e))
                 }
-                .collect {
-                    _uiState.emit(UiState.Success(it))
+                .collect { entity ->
+                    _uiState.emit(UiState.Success(entity))
                 }
         }
     }
 
+    /**
+     * Search 데이터 추가
+     */
     fun insert(entity: SearchEntity) {
         viewModelScope.launch {
             repository.insert(entity)
         }
     }
 
+    /**
+     * 특정 Search 데이터 삭제
+     */
     fun delete(entity: SearchEntity) {
         viewModelScope.launch {
             repository.delete(entity)
         }
     }
 
+    /**
+     * 특정 Search 데이터 전부 삭제
+     */
     fun deleteAll() {
         viewModelScope.launch {
             repository.deleteAll()
