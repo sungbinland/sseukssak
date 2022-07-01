@@ -7,6 +7,7 @@
 
 package team.sungbinland.sseukssak.activity.main
 
-sealed class Event {
-    object OpenDrawer : Event()
+interface BoardClickListener {
+
+    fun onBoardClick(boardId: String)
 }

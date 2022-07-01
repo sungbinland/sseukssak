@@ -9,10 +9,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-    </data>
-
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/drawer"
         android:layout_width="240dp"
@@ -50,160 +46,25 @@
                     style="@style/TextSmall14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/label_welcome"
-                    app:layout_constraintEnd_toStartOf="@id/tv_welcome_name"
+                    android:bufferType="spannable"
+                    android:text="안녕하세요, 창민님!\n오늘도 쓱싹해보세요"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tv_welcome_name"
-                    style="@style/TextSmall14.Bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toStartOf="@id/tv_welcome_rear"
-                    app:layout_constraintStart_toEndOf="@id/tv_welcome"
-                    app:layout_constraintTop_toTopOf="@id/tv_welcome"
-                    tools:text="창민" />
-
-                <TextView
-                    android:id="@+id/tv_welcome_rear"
-                    style="@style/TextSmall14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/label_user_suffix"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_welcome"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/tv_welcome_name"
-                    app:layout_constraintTop_toTopOf="@id/tv_welcome" />
-
-                <TextView
-                    android:id="@+id/tv_today"
-                    style="@style/TextSmall14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/label_today"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_welcome"
-                    tools:text="오늘도 " />
-
-                <TextView
-                    android:id="@+id/tv_sseukssak"
-                    style="@style/TextSmall14.Bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/app_name"
-                    app:layout_constraintStart_toEndOf="@id/tv_today"
-                    app:layout_constraintTop_toTopOf="@id/tv_today"
-                    tools:text=" 쓱싹" />
-
-                <TextView
-                    android:id="@+id/tv_try"
-                    style="@style/TextSmall14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/label_try"
-                    app:layout_constraintStart_toEndOf="@id/tv_sseukssak"
-                    app:layout_constraintTop_toTopOf="@id/tv_today" />
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraint_sseukssak_list"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_board"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="36dp"
                 android:layout_marginTop="26dp"
-                android:layout_marginEnd="36dp"
-                android:background="@drawable/border_top_bottom"
-                android:paddingVertical="18dp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/constraint_welcome">
-
-                <ImageView
-                    android:id="@+id/iv_sseukssak_list"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:src="@drawable/sungbinland"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    style="@style/TextMedium.Bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="@string/label_sseukssak_list"
-                    app:layout_constraintBottom_toBottomOf="@id/iv_sseukssak_list"
-                    app:layout_constraintStart_toEndOf="@id/iv_sseukssak_list"
-                    app:layout_constraintTop_toTopOf="@id/iv_sseukssak_list" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraint_board"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="36dp"
-                android:background="@drawable/border_bottom"
-                android:paddingVertical="18dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/constraint_sseukssak_list">
-
-                <ImageView
-                    android:id="@+id/iv_board"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:src="@drawable/sungbinland"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    style="@style/TextMedium.Bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="@string/label_my_sseukssak_board"
-                    app:layout_constraintBottom_toBottomOf="@id/iv_board"
-                    app:layout_constraintStart_toEndOf="@id/iv_board"
-                    app:layout_constraintTop_toTopOf="@id/iv_board" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraint_profile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="36dp"
-                android:background="@drawable/border_bottom"
-                android:paddingVertical="18dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/constraint_board">
-
-                <ImageView
-                    android:id="@+id/iv_profile"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:src="@drawable/sungbinland"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    style="@style/TextMedium.Bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="@string/label_profile"
-                    app:layout_constraintBottom_toBottomOf="@id/iv_profile"
-                    app:layout_constraintStart_toEndOf="@id/iv_profile"
-                    app:layout_constraintTop_toTopOf="@id/iv_profile" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                app:layout_constraintTop_toBottomOf="@id/constraint_welcome"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_board" />
 
             <TextView
                 style="@style/TextSmall10"

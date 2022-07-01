@@ -7,7 +7,6 @@
 
 package team.sungbinland.sseukssak.dto
 
-
 /**
  * 쓱싹(게시글 정보) 객체
  *
@@ -23,7 +22,7 @@ data class Sseukssak(
     val id: String,
     val title: String,
     val contents: String,
-    val img: String,
+    val image: String,
     val comments: String,
     val likes: String,
     val stars: String
