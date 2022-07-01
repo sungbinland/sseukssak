@@ -45,6 +45,8 @@ object Versions {
 
     object Jetpack {
         const val Hilt = "2.42"
+        const val Room = "2.4.2"
+
     }
 
     object OssLicense {
