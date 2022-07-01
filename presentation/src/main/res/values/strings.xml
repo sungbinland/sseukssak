@@ -7,9 +7,22 @@
 
 <resources>
     <string name="app_name">쓱싹</string>
-
-    <string name="skip_login"><u>로그인 건너뛰기</u></string>
-
+    
     <string name="activity_login_button_kakao_login">카카오톡으로 로그인하기</string>
     <string name="activity_login_description_sseukssak">인터넷에서 마주친 소중한 정보를\n쉽게 쓱-싹해서 보관해보세요</string>
+    <string name="skip_login"><u>로그인 건너뛰기</u></string>
+
+    <!-- Navigation -->
+    <string name="label_sseukssak_list">쓱싹리스트</string>
+    <string name="label_my_sseukssak_board">내 쓱싹보드</string>
+    <string name="label_profile">프로필</string>
+    <string name="drawer_open">drawer_open</string>
+    <string name="drawer_close">drawer_close</string>
+
+    <!-- TextView -->
+    <string name="label_service_center">고객센터</string>
+    <string name="label_question">자주 묻는 질문</string>
+    <string name="label_want_msg">쓱싹에게 전하고 싶은 메세지가 있다면</string>
+    <string name="label_order_new">최신</string>
+    <string name="label_search">무엇이든 검색해보세요!</string>
 </resources>

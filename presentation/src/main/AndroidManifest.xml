@@ -15,7 +15,7 @@
         android:theme="@style/Theme.SseukSsak.Splash">
 
         <activity
-            android:name=".activity.EmptyActivity"
+            android:name=".activity.main.MainActivity"
             android:exported="true" />
 
         <activity

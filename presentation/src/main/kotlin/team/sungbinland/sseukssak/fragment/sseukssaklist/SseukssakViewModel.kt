@@ -5,8 +5,11 @@
  * Please see: https://github.com/sungbinland/sseukssak/blob/main/LICENSE.
  */
 
-package team.sungbinland.sseukssak.activity
+package team.sungbinland.sseukssak.fragment.sseukssaklist
 
+import dagger.hilt.android.lifecycle.HiltViewModel
 import team.sungbinland.sseukssak.base.BaseViewModel
+import javax.inject.Inject
 
-class EmptyViewModel : BaseViewModel()
+@HiltViewModel
+class SseukssakViewModel @Inject constructor() : BaseViewModel()
