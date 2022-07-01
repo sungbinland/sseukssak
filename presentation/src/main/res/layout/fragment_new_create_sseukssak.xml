@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ SseukSsak © 2022 Team Sungbinland. all rights reserved.
+  ~ SseukSsak license is under the MIT.
+  ~
+  ~ Please see: https://github.com/sungbinland/sseukssak/blob/main/LICENSE.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="fragment"
+            type="team.sungbinland.sseukssak.fragment.create.NewCreateSeeukSSakFragment" />
+
+        <variable
+            name="vm"
+            type="team.sungbinland.sseukssak.fragment.create.NewCreateSseukssakViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20sp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:lineSpacingExtra="9sp"
+            app:contentInsetStart="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_icon"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:contentDescription="@null"
+                android:src="@drawable/sungbinland"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_icon_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/new_sseukssak_text"
+                android:textColor="@color/new_seaukssak_black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_icon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_icon_detail_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center"
+                android:text="@string/new_sseukssak_store"
+                android:textColor="#343434"
+                android:textSize="12sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <TextView
+                android:id="@+id/tv_link"
+                android:layout_width="42dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
+                android:gravity="end"
+                android:text="@string/new_sseukssak_link"
+                android:textColor="@color/new_seaukssak_black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_link"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_radius_28dp"
+                android:backgroundTint="@color/new_seaukssak_gray"
+                android:hint="@string/new_sseukssak_input_link"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:paddingStart="18dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="10dp"
+                android:textColor="@color/new_seaukssak_black"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="58dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:gravity="end"
+                android:text="@string/new_sseukssak_title"
+                android:textColor="@color/new_seaukssak_black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_radius_28dp"
+                android:backgroundTint="@color/new_seaukssak_gray"
+                android:hint="@string/new_sseukssak_input_title"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:paddingStart="18dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="10dp"
+                android:textColor="@color/new_seaukssak_black"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_memo"
+                android:layout_width="43dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:gravity="end"
+                android:text="@string/new_sseukssak_memo"
+                android:textColor="#343434"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_memo"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_radius_12do"
+                android:backgroundTint="@color/new_seaukssak_gray"
+                android:gravity="top"
+                android:hint="@string/new_sseukssak_memo_text"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:paddingStart="18dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="0dp"
+                android:textColor="@color/new_seaukssak_black"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_hashtag"
+                android:layout_width="67dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:gravity="end"
+                android:text="@string/new_sseukssak_hashtag"
+                android:textColor="#343434"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_hashtag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_radius_28dp"
+                android:backgroundTint="@color/new_seaukssak_gray"
+                android:hint="@string/new_sseukssak_enter_as"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:paddingStart="18dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="10dp"
+                android:textColor="@color/new_seaukssak_black"
+                android:textSize="12sp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_create_sseukssak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_radius_33dp"
+                android:backgroundTint="@color/new_seaukssak_yellow"
+                android:onClick="@{()->fragment.newCreateSseukssak()}"
+                android:text="@string/new_sseukssak_upload_btn"
+                android:textColor="#ff7a9c"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

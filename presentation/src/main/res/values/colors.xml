@@ -6,8 +6,11 @@
   -->
 
 <resources>
+    <color name="new_seaukssak_gray">#eeeeee</color>
+    <color name="new_seaukssak_black">#343434</color>
+    <color name="new_seaukssak_yellow">#ffd264</color>
+
     <color name="white">#ffffff</color>
-    
     <color name="black">#000000</color>
     <color name="navy_grey">#e2ebf3</color>
     <color name="black">#000000</color>
